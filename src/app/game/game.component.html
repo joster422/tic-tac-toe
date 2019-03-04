@@ -1,0 +1,3 @@
+<div *ngFor="let cell of game.grid" (click)="click(cell)">
+  {{cell.state || 'BLANK'}}
+</div>
