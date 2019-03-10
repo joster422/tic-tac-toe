@@ -13,4 +13,24 @@
   @media (min-width: 1200px) {
     max-width: 1140px;
   }
+
+  form {
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(3, 1fr);
+
+    input[type="text"] {
+      padding-top: 0;
+      margin: 0;
+      border: 0;
+      font-size: 1em;
+    }
+
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+      justify-content: center;
+    }
+  }
 }
