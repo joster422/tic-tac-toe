@@ -8,9 +8,13 @@
   grid-gap: 0.5em;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
-  background-color: black;
+  background-image: radial-gradient(black, white);
 }
 
 div {
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }

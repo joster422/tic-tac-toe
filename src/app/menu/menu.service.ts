@@ -6,20 +6,18 @@ import { FormBuilder } from "@angular/forms";
 })
 export class MenuService {
   form = this.formBuilder.group({
-    isBotEnabled: { value: false },
-    isBotFirst: { value: false, disabled: true },
-    isBotAllowedCenter: { value: true, disabled: true }
+    isBotEnabled: [true],
+    isBotFirst: [false],
+    isBotAllowedCenter: [true]
   });
 
   constructor(private formBuilder: FormBuilder) {
-    this.form.valueChanges.subscribe(() => {
-      const botAction = this.form.get("isBotEnabled").value
-        ? "enable"
-        : "disable";
-      this.form.get("isBotFirst")[botAction]({
+    this.form.get("isBotEnabled").valueChanges.subscribe(value => {
+      const action = value ? "enable" : "disable";
+      this.form.get("isBotFirst")[action]({
         emitEvent: false
       });
-      this.form.get("isBotAllowedCenter")[botAction]({
+      this.form.get("isBotAllowedCenter")[action]({
         emitEvent: false
       });
     });

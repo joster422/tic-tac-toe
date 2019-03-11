@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { MenuService } from "./menu.service";
 
 @Component({
@@ -6,8 +6,6 @@ import { MenuService } from "./menu.service";
   templateUrl: "./menu.component.html",
   styleUrls: ["./menu.component.scss"]
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
   constructor(public menuService: MenuService) {}
-
-  ngOnInit() {}
 }

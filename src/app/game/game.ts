@@ -13,27 +13,7 @@ export class Game {
     }
   }
 
-  choose(x: number, y: number): boolean {
-    let cell = this.grid.find(cell => cell.x === x && cell.y === y);
-    if (cell.state !== null) return false;
-    this.turn++;
-    cell.state =
-      this.turn % 2 === 1 && this.isXFirst ? CellState.x : CellState.o;
-    return this.isOver();
-  }
-
-  private isOver(): boolean {
-    const paths = this.getAllPaths();
-    return (
-      paths.some(
-        path =>
-          path.every(cell => cell.state === CellState.x) ||
-          path.every(cell => cell.state === CellState.o)
-      ) || this.grid.every(cell => cell.state !== null)
-    );
-  }
-
-  private getAllPaths(): Cell[][] {
+  get paths(): Cell[][] {
     let paths = [];
     for (let i = 0; i < 3; i++) {
       let rows = [];
@@ -52,5 +32,23 @@ export class Game {
     }
     paths = [...paths, diagonal1, diagonal2];
     return paths;
+  }
+
+  // call this on a cell who is not hidden
+  // return true if choice results in win
+  // return false if choice results in no more playable moves
+  // return null if choice does not result in a win
+  choose(cell: Cell): boolean | null {
+    this.turn++;
+    cell.state =
+      this.turn % 2 === 1 && this.isXFirst ? CellState.x : CellState.o;
+    if (this.grid.every(cell => cell.state !== null)) return false;
+    return this.paths.some(
+      path =>
+        path.every(cell => cell.state === CellState.x) ||
+        path.every(cell => cell.state === CellState.o)
+    )
+      ? true
+      : null;
   }
 }
