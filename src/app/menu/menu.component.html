@@ -1,8 +1,8 @@
 <form novalidate [formGroup]="menuService.form">
-  <span style="text-align: left">
-    <input type="text" value="Player 1" />
+  <span class="text-left">
+    <input type="text" formControlName="x" />
   </span>
-  <div class="flex">
+  <span class="bot" [formGroup]="menuService.form.get('bot')">
     <label>
       Is Bot enabled?
       <input type="checkbox" formControlName="isBotEnabled" />
@@ -15,8 +15,8 @@
       Is Bot allowed to take center first?
       <input type="checkbox" formControlName="isBotAllowedCenter" />
     </label>
-  </div>
-  <span style="text-align: right">
-    <input type="text" value="Bot" style="text-align: right" />
+  </span>
+  <span class="text-right">
+    <input type="text" formControlName="o" class="text-right" />
   </span>
 </form>

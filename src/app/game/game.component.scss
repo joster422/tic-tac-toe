@@ -11,10 +11,16 @@
   background-image: radial-gradient(black, white);
 }
 
-div {
+button {
   background-color: white;
   display: flex;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 1.5em;
   align-items: center;
   justify-content: center;
   user-select: none;
+  font-weight: bold;
+  color: black;
 }

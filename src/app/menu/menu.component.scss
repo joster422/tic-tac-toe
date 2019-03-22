@@ -13,28 +13,38 @@
   @media (min-width: 1200px) {
     max-width: 1140px;
   }
+}
 
-  form {
-    display: grid;
-    grid-gap: 0.5em;
-    grid-template-columns: repeat(3, 1fr);
+form {
+  display: flex;
 
-    label {
-      white-space: nowrap;
-    }
+  label {
+    border: 2px solid black;
+    border-radius: 0.5em;
+    padding: 0.4em;
+    margin: 0.25em;
+    // white-space: nowrap;
+  }
 
-    input[type="text"] {
-      padding-top: 0;
-      margin: 0;
-      border: 0;
-      font-size: 1em;
-    }
+  input[type="text"] {
+    padding-top: 0;
+    margin: 0;
+    border: 0;
+    font-size: 1em;
+  }
 
-    div {
-      display: flex;
-      flex-wrap: wrap;
-      text-align: center;
-      justify-content: center;
-    }
+  .bot {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+  }
+
+  span.text-left input {
+    border-bottom: 1px solid blue;
+  }
+
+  span.text-right input {
+    border-bottom: 1px solid orange;
   }
 }

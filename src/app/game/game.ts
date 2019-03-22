@@ -14,41 +14,39 @@ export class Game {
   }
 
   get paths(): Cell[][] {
-    let paths = [];
+    let paths: Cell[][] = [];
     for (let i = 0; i < 3; i++) {
-      let rows = [];
-      let columns = [];
+      let rows: Cell[] = [];
+      let columns: Cell[] = [];
       for (let j = 0; j < 3; j++) {
-        rows.push(this.grid.find(cell => cell.x === i && cell.y === j));
-        columns.push(this.grid.find(cell => cell.x === j && cell.y === i));
+        rows.push(this.grid.find(cell => cell.x === i && cell.y === j)!);
+        columns.push(this.grid.find(cell => cell.x === j && cell.y === i)!);
       }
       paths = [...paths, rows, columns];
     }
-    let diagonal1 = [];
-    let diagonal2 = [];
+    let diagonal1: Cell[] = [];
+    let diagonal2: Cell[] = [];
     for (let i = 0; i < 3; i++) {
-      diagonal1.push(this.grid.find(cell => cell.x === i && cell.y === i));
-      diagonal2.push(this.grid.find(cell => cell.x === i && cell.y === 2 - i));
+      diagonal1.push(this.grid.find(cell => cell.x === i && cell.y === i)!);
+      diagonal2.push(this.grid.find(cell => cell.x === i && cell.y === 2 - i)!);
     }
     paths = [...paths, diagonal1, diagonal2];
     return paths;
   }
 
-  // call this on a cell who is not hidden
-  // return true if choice results in win
-  // return false if choice results in no more playable moves
-  // return null if choice does not result in a win
-  choose(cell: Cell): boolean | null {
+  get turnState() {
+    return this.turn % 2 === 1 && this.isXFirst ? CellState.x : CellState.o;
+  }
+
+  choose(cell: Cell): boolean | null | undefined {
+    if (cell.state !== null) return undefined;
     this.turn++;
-    cell.state =
-      this.turn % 2 === 1 && this.isXFirst ? CellState.x : CellState.o;
-    if (this.grid.every(cell => cell.state !== null)) return false;
+    cell.state = this.turnState;
+    if (this.grid.every(cell => cell.state !== null)) return null;
     return this.paths.some(
       path =>
         path.every(cell => cell.state === CellState.x) ||
         path.every(cell => cell.state === CellState.o)
-    )
-      ? true
-      : null;
+    );
   }
 }

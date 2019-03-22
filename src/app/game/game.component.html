@@ -1,3 +1,4 @@
-<div *ngFor="let cell of game.grid" (click)="click(cell)">
-  {{cell.state || 'BLANK'}}
-</div>
+<button type="button" *ngFor="let cell of game.grid" [disabled]="cell.state !== null" (click)="click(cell)"
+  [@markCell]="cell.state">
+  {{cell.state}}
+</button>
