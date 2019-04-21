@@ -34,14 +34,14 @@ export class Game {
     return paths;
   }
 
-  get turnState() {
-    return this.turn % 2 === 1 && this.isXFirst ? CellState.x : CellState.o;
+  get turnState(): CellState {
+    return this.turn % 2 === 0 && this.isXFirst ? CellState.x : CellState.o;
   }
 
   choose(cell: Cell): boolean | null | undefined {
     if (cell.state !== null) return undefined;
-    this.turn++;
     cell.state = this.turnState;
+    this.turn++;
     if (this.grid.every(cell => cell.state !== null)) return null;
     return this.paths.some(
       path =>

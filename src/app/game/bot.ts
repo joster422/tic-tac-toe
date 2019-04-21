@@ -2,7 +2,7 @@ import { Cell } from "./cell";
 import { Game } from "./game";
 
 export class Bot {
-  constructor(private isAllowedCenter: boolean) {}
+  constructor(private isAllowedCenterFirst = true) {}
 
   getMove(game: Game): Cell {
     const blankCells = game.grid.filter(cell => cell.state === null);
@@ -10,7 +10,7 @@ export class Bot {
     const cornerCell = blankCells.find(cell => cell.x !== 1 && cell.y !== 1);
 
     if (blankCells.length === 9)
-      return this.isAllowedCenter ? centerCell! : cornerCell!;
+      return this.isAllowedCenterFirst ? centerCell! : cornerCell!;
 
     if (centerCell && centerCell.state === null) return centerCell;
 
@@ -26,11 +26,16 @@ export class Bot {
 
     if (urgentPaths.length === 1) {
       return urgentPaths[0].find(cell => cell.state === null)!;
-    } else if (urgentPaths.length > 1) {
-      // get bot player context
     }
 
-    debugger;
-    return game.grid[0];
+    const winPath = urgentPaths.find(path =>
+      path.every(cell => cell.state === game.turnState || cell.state === null)
+    );
+    if (winPath) {
+      return winPath.find(cell => cell.state === null)!;
+    }
+    // consider check for !losing path
+    console.log("guessing");
+    return game.grid.find(cell => cell.state === null)!;
   }
 }

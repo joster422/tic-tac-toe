@@ -1,0 +1,63 @@
+@import "../../../../styles.scss";
+@import "../form.component.scss";
+
+input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+  &:checked + .toggle {
+    background: repeating-linear-gradient(
+      45deg,
+      white,
+      $blue 5px,
+      $orange 10px,
+      white 15px
+    );
+    &:after {
+      left: calc(100% - 2px);
+      transform: translateX(-100%);
+    }
+  }
+}
+
+label {
+  padding: $input-padding;
+  border: 1px solid lightgray;
+  border-radius: 0.5em;
+  margin: $input-margin;
+
+  display: flex;
+  align-items: center;
+
+  &:focus-within {
+    box-shadow: 0 0 1em lightgray;
+  }
+}
+
+.toggle {
+  cursor: pointer;
+  width: 24px;
+  height: 14px;
+  background: lightgrey;
+  border-radius: 14px;
+  margin-left: $input-margin;
+  position: relative;
+  border: 1px solid black;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid black;
+    transition: 0.4s;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}

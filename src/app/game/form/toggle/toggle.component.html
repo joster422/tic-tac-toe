@@ -1,0 +1,5 @@
+<label>
+    {{label}}
+    <input type="checkbox" [formControl]="control" (blur)="onTouched()" />
+    <div class="toggle" [class.disabled]="control.disabled"></div>
+</label>

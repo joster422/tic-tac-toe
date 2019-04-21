@@ -1,4 +1,11 @@
-<button type="button" *ngFor="let cell of game.grid" [disabled]="cell.state !== null" (click)="click(cell)"
-  [@markCell]="cell.state">
-  {{cell.state}}
-</button>
+<div id="game">
+  <button type="button" *ngFor="let cell of game.grid" [class.x]="cell.state === cellState.x"
+    [class.o]="cell.state === cellState.o" [class.highlight]="cell.highlight" [disabled]="cell.state !== null"
+    (click)="click(cell)">
+    {{cell.state}}
+    <span *ngIf="cell.state === null" class="hover">
+      {{game.turnState}}
+    </span>
+  </button>
+</div>
+<tac-form [form]="form" (formChange)="newGame()"></tac-form>

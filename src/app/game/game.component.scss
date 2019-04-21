@@ -1,26 +1,85 @@
-:host {
+@import "../../styles.scss";
+
+#game {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
+
+  background-image: radial-gradient(black, white);
+
   display: grid;
-  grid-gap: 0.5em;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
-  background-image: radial-gradient(black, white);
+  grid-gap: 0.5em;
+
+  button {
+    background-color: white;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: 1.5em;
+
+    user-select: none;
+    font-weight: bold;
+    color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hover {
+      display: none;
+    }
+
+    &:hover .hover {
+      display: inherit;
+    }
+
+    &.x {
+      animation: xEnter 2s;
+    }
+    &.o {
+      animation: oEnter 2s;
+    }
+    &.highlight {
+      background-color: yellow;
+    }
+  }
 }
 
-button {
-  background-color: white;
-  display: flex;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  font-size: 1.5em;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  font-weight: bold;
-  color: black;
+tac-form {
+  position: absolute;
+  top: 100%;
+  right: 0.75em;
+  left: 0.75em;
+
+  @media (min-width: 992px) {
+    max-width: 960px;
+    margin: auto;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+@keyframes xEnter {
+  0%,
+  100% {
+    color: $blue;
+  }
+  50% {
+    color: $orange;
+  }
+}
+@keyframes oEnter {
+  0%,
+  100% {
+    color: $orange;
+  }
+  50% {
+    color: $blue;
+  }
 }

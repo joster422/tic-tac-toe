@@ -5,10 +5,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { GameComponent } from "./game/game.component";
-import { MenuComponent } from "./menu/menu.component";
+import { FormComponent } from "./game/form/form.component";
+import { ToggleComponent } from "./game/form/toggle/toggle.component";
 
 @NgModule({
-  declarations: [AppComponent, GameComponent, MenuComponent],
+  declarations: [AppComponent, GameComponent, FormComponent, ToggleComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
