@@ -12,7 +12,7 @@ input[type="checkbox"] {
       $orange 10px,
       white 15px
     );
-    &:after {
+    .dot {
       left: calc(100% - 2px);
       transform: translateX(-100%);
     }
@@ -24,7 +24,6 @@ label {
   border: 1px solid lightgray;
   border-radius: 0.5em;
   margin: $input-margin;
-
   display: flex;
   align-items: center;
 
@@ -34,30 +33,27 @@ label {
 }
 
 .toggle {
-  cursor: pointer;
+  position: relative;
   width: 24px;
   height: 14px;
-  background: lightgrey;
+  background-color: lightgrey;
+  border: 1px solid black;
   border-radius: 14px;
   margin-left: $input-margin;
-  position: relative;
-  border: 1px solid black;
 
-  &:after {
-    content: "";
+  &.disabled {
+    opacity: 0.3;
+  }
+
+  .dot {
     position: absolute;
     top: 2px;
     left: 2px;
     width: 8px;
     height: 8px;
-    background: white;
-    border-radius: 50%;
+    background-color: white;
     border: 1px solid black;
+    border-radius: 50%;
     transition: 0.4s;
-  }
-
-  &.disabled {
-    opacity: 0.3;
-    cursor: default;
   }
 }

@@ -1,5 +1,7 @@
-<label>
+<label [style.cursor]="control.disabled ? 'not-allowed' : 'pointer'">
     {{label}}
     <input type="checkbox" [formControl]="control" (blur)="onTouched()" />
-    <div class="toggle" [class.disabled]="control.disabled"></div>
+    <div class="toggle" [class.disabled]="control.disabled">
+        <div class="dot"></div>
+    </div>
 </label>
