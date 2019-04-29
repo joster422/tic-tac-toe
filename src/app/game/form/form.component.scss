@@ -1,63 +1,30 @@
 @import "../../../styles.scss";
 
-$input-padding: 0.5em;
-$input-margin: 0.5em;
-
 form {
-  display: grid;
-  grid-template-areas:
-    "left"
-    "right"
-    "bot";
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1em 1em 0 1em;
+}
 
-  @media (min-width: 576px) {
-    grid-template-areas:
-      "left right"
-      "bot bot";
+button,
+tac-toggle {
+  background-color: white;
+  border: 1px solid lightgrey;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  font-size: 1em;
+  user-select: none;
+  &:last-child {
+    margin-right: 0;
   }
-  @media (min-width: 1200px) {
-    grid-template-areas: "left bot right";
-  }
+}
 
-  .x-name {
-    grid-area: left;
-    text-align: left;
-    input {
-      border-bottom: 1px solid $blue;
-      &:focus {
-        border-color: $blue;
-        box-shadow: 0 0 1em lightgrey;
-        outline: none;
-      }
-    }
-  }
-  .o-name {
-    grid-area: right;
-    text-align: right;
-    input {
-      border-bottom-color: $orange;
-      text-align: right;
-      &:focus {
-        border-color: $orange;
-        box-shadow: 0 0 1em lightgrey;
-        outline: none;
-      }
-    }
-  }
-
-  .bot {
-    grid-area: bot;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
-  }
-
-  input[type="text"] {
-    border: 1px solid lightgray;
-    border-radius: 0.5em;
-    padding: $input-padding;
-    margin: $input-margin;
-    font-size: 1em;
+button {
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 0.5em lightgray;
   }
 }

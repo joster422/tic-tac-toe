@@ -34,7 +34,21 @@ export class Bot {
     if (winPath) {
       return winPath.find(cell => cell.state === null)!;
     }
-    // consider check for !losing path
+
+    // _ _ _
+    // _ O X
+    // X _ _
+    const cornerCells = blankCells.filter(cell => cell.x !== 1 && cell.y !== 1);
+    if (blankCells.length === 6 && cornerCells.length === 3) {
+      const emptyPath = game.paths.find(path =>
+        path.every(cell => cell.state === null)
+      );
+      return emptyPath!.find(cell => cell.x === 1 || cell.y === 1)!;
+    }
+
+    // X _ _
+    // O X _
+    // _ _ O
     console.log("guessing");
     return game.grid.find(cell => cell.state === null)!;
   }

@@ -4,20 +4,7 @@ import { Cell } from "./cell";
 import { Game } from "./game";
 
 import { CellState } from "./cell-state.enum";
-import { FormBuilder } from "@angular/forms";
-
-const botOName = "bOt";
-const playerXName = "X-treme";
-
-interface FormValue {
-  x: string;
-  o: string;
-  bot: {
-    isEnabled: boolean;
-    isFirst: boolean;
-    isAllowedCenterFirst: boolean;
-  };
-}
+import { Form } from "./form/form.model";
 
 @Component({
   selector: "tac-game",
@@ -28,45 +15,34 @@ export class GameComponent {
   allowClicks = true;
   bot = new Bot();
   cellState = CellState;
-  form = this.formBuilder.group({
-    x: [playerXName],
-    o: [botOName],
-    bot: this.formBuilder.group({
-      isEnabled: [true],
-      isFirst: [false],
-      isAllowedCenterFirst: [{ value: true, disabled: true }]
-    })
-  });
   game = new Game();
+  form = new Form();
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  get formValue(): FormValue {
-    return this.form.value as FormValue;
-  }
+  constructor() {}
 
   click(cell: Cell) {
     if (!this.allowClicks) return;
     switch (this.game.choose(cell)) {
       case false:
-        this.formValue.bot.isEnabled && this.botMove();
+        this.form.isEnabled && this.botMove();
         return;
       case true:
         this.game.turnState === CellState.o
-          ? this.endGame(`${this.formValue.x} Wins`)
-          : this.endGame(`${this.formValue.o} Wins`);
+          ? this.endGame(`X Wins`)
+          : this.endGame(`O Wins`);
         break;
       case null:
-        this.endGame("Draw");
+        // draw
+        this.newGame();
         break;
     }
   }
 
   newGame() {
     this.game = new Game();
-    if (!this.formValue.bot.isEnabled) return;
-    this.bot = new Bot(this.formValue.bot.isAllowedCenterFirst);
-    if (!this.formValue.bot.isFirst) return;
+    if (!this.form.isEnabled) return;
+    this.bot = new Bot(this.form.isAllowedCenterFirst);
+    if (!this.form.isFirst) return;
     this.botMove();
   }
 
@@ -76,11 +52,12 @@ export class GameComponent {
         return;
       case true:
         this.game.turnState === CellState.o
-          ? this.endGame(`${this.formValue.x} Wins`)
-          : this.endGame(`${this.formValue.o} Wins`);
+          ? this.endGame(`Bot X Wins`)
+          : this.endGame(`Bot O Wins`);
         break;
       case null:
-        this.endGame("Draw");
+        // draw
+        this.newGame();
         break;
     }
   }

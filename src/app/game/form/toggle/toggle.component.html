@@ -1,6 +1,6 @@
-<label [style.cursor]="control.disabled ? 'not-allowed' : 'pointer'">
-    {{label}}
-    <input type="checkbox" [formControl]="control" (blur)="onTouched()" />
+<label>
+    <ng-content></ng-content>
+    <input type="checkbox" [formControl]="control" (blur)="onTouched()" tabindex="-1" />
     <div class="toggle" [class.disabled]="control.disabled">
         <div class="dot"></div>
     </div>

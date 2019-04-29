@@ -1,13 +1,15 @@
-<form novalidate [formGroup]="form">
-  <span class="x-name">
-    <input type="text" formControlName="x" />
-  </span>
-  <span class="bot" [formGroup]="form.get('bot')">
-    <tac-toggle formControlName="isEnabled" label="Bot enabled"></tac-toggle>
-    <tac-toggle formControlName="isFirst" label="Bot first"></tac-toggle>
-    <tac-toggle formControlName="isAllowedCenterFirst" label="Bot allowed to take center first"></tac-toggle>
-  </span>
-  <span class="o-name">
-    <input type="text" formControlName="o" />
-  </span>
+<form novalidate #form="ngForm">
+  <button type="button" (click)="subject.next()" (keypress)="subject.next()">
+    Restart
+  </button>
+  <tac-toggle [(ngModel)]="model.isEnabled" name="isEnabled">
+    Bot enabled
+  </tac-toggle>
+  <tac-toggle [(ngModel)]="model.isFirst" name="isFirst" [disabled]="!model.isEnabled">
+    Bot first
+  </tac-toggle>
+  <tac-toggle [(ngModel)]="model.isAllowedCenterFirst" name="isAllowedCenterFirst"
+    [disabled]="!model.isEnabled || !model.isFirst">
+    Bot allowed to take center first
+  </tac-toggle>
 </form>

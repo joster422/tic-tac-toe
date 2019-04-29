@@ -1,9 +1,35 @@
 @import "../../../../styles.scss";
-@import "../form.component.scss";
+
+:host {
+  outline: none;
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 0.5em lightgray;
+    cursor: pointer;
+    * {
+      cursor: pointer;
+    }
+    &[disabled] {
+      box-shadow: none;
+      cursor: not-allowed;
+      * {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+label {
+  margin: 0.5em;
+  display: flex;
+  align-items: center;
+}
 
 input[type="checkbox"] {
-  position: absolute;
-  left: -9999px;
+  display: none;
+  &:disabled + .toggle {
+    opacity: 0.3;
+  }
   &:checked + .toggle {
     background: repeating-linear-gradient(
       45deg,
@@ -13,47 +39,27 @@ input[type="checkbox"] {
       white 15px
     );
     .dot {
-      left: calc(100% - 2px);
-      transform: translateX(-100%);
+      transform: translateX(1em);
     }
-  }
-}
-
-label {
-  padding: $input-padding;
-  border: 1px solid lightgray;
-  border-radius: 0.5em;
-  margin: $input-margin;
-  display: flex;
-  align-items: center;
-
-  &:focus-within {
-    box-shadow: 0 0 1em lightgray;
   }
 }
 
 .toggle {
   position: relative;
-  width: 24px;
-  height: 14px;
+  width: 1.6em;
+  height: 1em;
   background-color: lightgrey;
   border: 1px solid black;
-  border-radius: 14px;
-  margin-left: $input-margin;
-
-  &.disabled {
-    opacity: 0.3;
-  }
+  margin-left: 0.5em;
 
   .dot {
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 8px;
-    height: 8px;
+    top: 0.2em;
+    left: 0;
+    width: 0.6em;
+    height: 0.6em;
     background-color: white;
-    border: 1px solid black;
-    border-radius: 50%;
+    outline: 1px solid black;
     transition: 0.4s;
   }
 }
