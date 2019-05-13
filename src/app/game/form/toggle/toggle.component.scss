@@ -1,65 +1,9 @@
-@import "../../../../styles.scss";
-
-:host {
-  outline: none;
-  &:focus,
-  &:hover {
-    box-shadow: 0 0 0.5em lightgray;
-    cursor: pointer;
-    * {
-      cursor: pointer;
-    }
-    &[disabled] {
-      box-shadow: none;
-      cursor: not-allowed;
-      * {
-        cursor: not-allowed;
-      }
-    }
-  }
-}
-
 label {
-  margin: 0.5em;
   display: flex;
   align-items: center;
-}
+  user-select: none;
 
-input[type="checkbox"] {
-  display: none;
-  &:disabled + .toggle {
-    opacity: 0.3;
-  }
-  &:checked + .toggle {
-    background: repeating-linear-gradient(
-      45deg,
-      white,
-      $blue 5px,
-      $orange 10px,
-      white 15px
-    );
-    .dot {
-      transform: translateX(1em);
-    }
-  }
-}
-
-.toggle {
-  position: relative;
-  width: 1.6em;
-  height: 1em;
-  background-color: lightgrey;
-  border: 1px solid black;
-  margin-left: 0.5em;
-
-  .dot {
-    position: absolute;
-    top: 0.2em;
-    left: 0;
-    width: 0.6em;
-    height: 0.6em;
-    background-color: white;
-    outline: 1px solid black;
-    transition: 0.4s;
+  button {
+    margin-left: 0.5em;
   }
 }

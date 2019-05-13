@@ -1,16 +1,5 @@
-import {
-  Component,
-  forwardRef,
-  HostListener,
-  HostBinding,
-  ElementRef,
-  Renderer2
-} from "@angular/core";
-import {
-  ControlValueAccessor,
-  FormControl,
-  NG_VALUE_ACCESSOR
-} from "@angular/forms";
+import { Component, forwardRef, Input } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
   selector: "tac-toggle",
@@ -25,33 +14,27 @@ import {
   ]
 })
 export class ToggleComponent implements ControlValueAccessor {
-  @HostBinding("tabindex")
-  get tabindex() {
-    if (!this.control) return "-1";
-    return this.control.disabled ? "-1" : "0";
-  }
-  @HostListener("click", ["$event"]) onclick(event: MouseEvent) {
-    event.preventDefault();
-    if (!this.control || this.control.disabled) return;
-    this.control.setValue(!this.control.value);
-  }
-  @HostListener("keypress") onkeypress() {
-    if (!this.control || this.control.disabled) return;
-    this.control.setValue(!this.control.value);
+  @Input() disabled = false;
+
+  model = false;
+
+  constructor() {}
+
+  click() {
+    if (this.disabled) return;
+    this.model = !this.model;
+    this.onChange(this.model);
   }
 
-  control: FormControl;
-
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-    this.control = new FormControl(false);
-    this.control.valueChanges.subscribe((value: boolean) =>
-      this.onChange(value)
-    );
+  keypress() {
+    if (this.disabled) return;
+    this.model = !this.model;
+    this.onChange(this.model);
   }
 
-  writeValue(value: boolean) {
-    this.control.setValue(value);
-  }
+  onChange(value: boolean) {}
+
+  onTouched() {}
 
   registerOnChange(fn: any) {
     this.onChange = fn;
@@ -61,21 +44,11 @@ export class ToggleComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  onChange(value: boolean) {}
-
-  onTouched() {}
-
   setDisabledState(isDisabled: boolean) {
-    this.control[isDisabled ? "disable" : "enable"]();
-    this.control.disabled
-      ? this.renderer.setAttribute(
-          this.elementRef.nativeElement,
-          "disabled",
-          "disabled"
-        )
-      : this.renderer.removeAttribute(
-          this.elementRef.nativeElement,
-          "disabled"
-        );
+    this.disabled = isDisabled;
+  }
+
+  writeValue(value: boolean) {
+    this.model = value;
   }
 }

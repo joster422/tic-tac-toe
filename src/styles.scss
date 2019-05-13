@@ -13,17 +13,37 @@ body {
     background: white;
   }
   &::-webkit-scrollbar-thumb {
-    background: repeating-linear-gradient(
-      45deg,
-      white,
-      $blue 5%,
-      $orange 10%,
-      white 15%
-    );
-    box-shadow: inset 0 0 0.25em black;
+    background: white;
+    border: 0.25em solid lightgrey;
     &:active,
     &:hover {
-      box-shadow: 0 0 1em black;
+      border: 0.25em solid black;
+      box-shadow: 0 0 0.5em black;
+    }
+  }
+}
+
+button {
+  background: white;
+  border-color: lightgrey;
+  border-width: medium;
+  padding: 0.5em;
+
+  font-size: 1em;
+  user-select: none;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 0.5em black;
+    &:disabled {
+      box-shadow: none;
     }
   }
 }

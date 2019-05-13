@@ -3,13 +3,13 @@
     Restart
   </button>
   <tac-toggle [(ngModel)]="model.isEnabled" name="isEnabled">
-    Bot enabled
+    🤖
   </tac-toggle>
   <tac-toggle [(ngModel)]="model.isFirst" name="isFirst" [disabled]="!model.isEnabled">
-    Bot first
+    🤖 first
   </tac-toggle>
   <tac-toggle [(ngModel)]="model.isAllowedCenterFirst" name="isAllowedCenterFirst"
     [disabled]="!model.isEnabled || !model.isFirst">
-    Bot allowed to take center first
+    🤖 take center first
   </tac-toggle>
 </form>

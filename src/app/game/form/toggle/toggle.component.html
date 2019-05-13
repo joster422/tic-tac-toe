@@ -1,7 +1,7 @@
 <label>
     <ng-content></ng-content>
-    <input type="checkbox" [formControl]="control" (blur)="onTouched()" tabindex="-1" />
-    <div class="toggle" [class.disabled]="control.disabled">
-        <div class="dot"></div>
-    </div>
+    <button type="button" [disabled]="disabled" (click)="click()" (keypress)="keypress()" (blur)="onTouched()"
+        [tabindex]="disabled ? -1 : 0">
+        {{model ? '✔️' : '🔲'}}
+    </button>
 </label>

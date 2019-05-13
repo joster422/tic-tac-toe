@@ -4,27 +4,12 @@ form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1em 1em 0 1em;
+  margin-top: 1em;
 }
 
 button,
 tac-toggle {
-  background-color: white;
-  border: 1px solid lightgrey;
-  margin-right: 1em;
   margin-bottom: 1em;
-  font-size: 1em;
-  user-select: none;
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-button {
-  cursor: pointer;
-  &:focus,
-  &:hover {
-    outline: none;
-    box-shadow: 0 0 0.5em lightgray;
-  }
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
