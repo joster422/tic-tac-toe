@@ -1,7 +1,0 @@
-<label>
-    <ng-content></ng-content>
-    <button type="button" [disabled]="disabled" (click)="click()" (keypress)="keypress()" (blur)="onTouched()"
-        [tabindex]="disabled ? -1 : 0">
-        {{model ? '✔️' : '🔲'}}
-    </button>
-</label>

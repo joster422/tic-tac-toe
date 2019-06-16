@@ -1,15 +1,14 @@
 <form novalidate #form="ngForm">
   <button type="button" (click)="subject.next()" (keypress)="subject.next()">
-    Restart
+    🔄
   </button>
-  <tac-toggle [(ngModel)]="model.isEnabled" name="isEnabled">
+  <fc-toggle [(ngModel)]="model.isEnabled" name="isEnabled">
     🤖
-  </tac-toggle>
-  <tac-toggle [(ngModel)]="model.isFirst" name="isFirst" [disabled]="!model.isEnabled">
+  </fc-toggle>
+  <fc-toggle [(ngModel)]="model.isFirst" name="isFirst" [disabled]="!model.isEnabled">
     🤖 first
-  </tac-toggle>
-  <tac-toggle [(ngModel)]="model.isAllowedCenterFirst" name="isAllowedCenterFirst"
-    [disabled]="!model.isEnabled || !model.isFirst">
+  </fc-toggle>
+  <fc-toggle [(ngModel)]="model.isCenterFirst" name="isCenterFirst" [disabled]="!model.isEnabled || !model.isFirst">
     🤖 take center first
-  </tac-toggle>
+  </fc-toggle>
 </form>

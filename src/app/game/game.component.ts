@@ -1,15 +1,15 @@
-import { Component } from "@angular/core";
-import { Bot } from "./bot";
-import { Cell } from "./cell";
-import { Game } from "./game";
+import { Component } from '@angular/core';
+import { Bot } from './bot';
+import { Cell } from './cell';
+import { Game } from './game';
 
-import { CellState } from "./cell-state.enum";
-import { Form } from "./form/form.model";
+import { CellState } from './cell-state.enum';
+import { Form } from './form/form.model';
 
 @Component({
-  selector: "tac-game",
-  templateUrl: "./game.component.html",
-  styleUrls: ["./game.component.scss"]
+  selector: 'tac-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.scss']
 })
 export class GameComponent {
   allowClicks = true;
@@ -41,7 +41,7 @@ export class GameComponent {
   newGame() {
     this.game = new Game();
     if (!this.form.isEnabled) return;
-    this.bot = new Bot(this.form.isAllowedCenterFirst);
+    this.bot = new Bot(this.form.isCenterFirst);
     if (!this.form.isFirst) return;
     this.botMove();
   }

@@ -1,15 +1,13 @@
-@import "../../../styles.scss";
-
 form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 1em;
 }
 
 button,
-tac-toggle {
+fc-toggle {
   margin-bottom: 1em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
 }
