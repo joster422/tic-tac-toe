@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Bot } from './bot';
-import { Cell } from './cell';
+import { Cell } from './cell/cell';
 import { Game } from './game';
 
-import { CellState } from './cell-state.enum';
+import { CellState } from './cell/cell.enum';
 import { Form } from './form/form.model';
 
 @Component({
-  selector: 'tac-game',
+  selector: 'ttt-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
@@ -18,13 +18,13 @@ export class GameComponent {
   game = new Game();
   form = new Form();
 
-  constructor() {}
+  constructor() { }
 
-  click(cell: Cell) {
+  claim(cell: Cell) {
     if (!this.allowClicks) return;
-    switch (this.game.choose(cell)) {
+    switch (this.game.claim(cell)) {
       case false:
-        this.form.isEnabled && this.botMove();
+        this.form.isBotEnabled && this.botMove();
         return;
       case true:
         this.game.turnState === CellState.o
@@ -40,26 +40,24 @@ export class GameComponent {
 
   newGame() {
     this.game = new Game();
-    if (!this.form.isEnabled) return;
-    this.bot = new Bot(this.form.isCenterFirst);
-    if (!this.form.isFirst) return;
+    if (!this.form.isBotEnabled) return;
+    this.bot = new Bot(this.form.isBotCenterFirst);
+    if (!this.form.isBotFirst) return;
     this.botMove();
   }
 
   private botMove() {
-    switch (this.game.choose(this.bot.getMove(this.game))) {
-      case false:
-        return;
-      case true:
-        this.game.turnState === CellState.o
-          ? this.endGame(`Bot X Wins`)
-          : this.endGame(`Bot O Wins`);
-        break;
-      case null:
-        // draw
-        this.newGame();
-        break;
+    const didBotWin = this.game.claim(this.bot.getMove(this.game));
+    if (didBotWin === undefined) throw new Error('bot should never play a claimed cell');
+    if (didBotWin === false) return;
+    if (didBotWin === null) {
+      // draw
+      this.newGame();
+      return;
     }
+    this.game.turnState === CellState.o
+      ? this.endGame(`Bot X Wins`)
+      : this.endGame(`Bot O Wins`);
   }
 
   private endGame(message: string) {

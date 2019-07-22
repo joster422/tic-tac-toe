@@ -1,0 +1,55 @@
+button {
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-size: x-large;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hover {
+      display: none;
+      opacity: 0.3;
+    }
+
+    &:disabled {
+      opacity: 1;
+      cursor: default;
+    }
+
+    &:hover,
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 0.5em lightgrey;
+      &:disabled {
+        box-shadow: none;
+      }
+      .hover {
+        display: inherit;
+        animation: fadeIn 0.5s ease;
+      }
+    }
+
+    &.highlight {
+      background: radial-gradient(
+        circle,
+        white 0%,
+        white 89%,
+        black 91%,
+        #fa3e00 93%,
+        #fa3e00 98%,
+        black 100%
+      );
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+  }
+  

@@ -1,9 +1,9 @@
-import { Cell } from './cell';
+import { Cell } from './cell/cell';
 import { Game } from './game';
-import { CellState } from './cell-state.enum';
+import { CellState } from './cell/cell.enum';
 
 export class Bot {
-  constructor(private isAllowedCenterFirst = true) {}
+  constructor(private isAllowedCenterFirst = true) { }
 
   getMove(game: Game): Cell {
     const blankCells = game.grid.filter(cell => cell.state === null);
@@ -42,7 +42,7 @@ export class Bot {
     if (
       blankCells.length === 6 &&
       game.grid.find(cell => cell.x === 1 && cell.y === 1)!.state ===
-        CellState.o
+      CellState.o
     ) {
       return blankCells!.find(cell => cell.x === 1 || cell.y === 1)!;
     }

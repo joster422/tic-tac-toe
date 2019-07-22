@@ -1,5 +1,5 @@
 export class Form {
-  isEnabled = true;
-  isFirst = false;
-  isCenterFirst = true;
+  isBotEnabled = true;
+  isBotFirst = false;
+  isBotCenterFirst = true;
 }

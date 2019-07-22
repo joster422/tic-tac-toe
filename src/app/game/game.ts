@@ -1,11 +1,11 @@
-import { Cell } from "./cell";
-import { CellState } from "./cell-state.enum";
+import { Cell } from "./cell/cell";
+import { CellState } from "./cell/cell.enum";
 
 export class Game {
   grid: Cell[] = [];
   turn = 0;
 
-  constructor(public readonly isXFirst = true) {
+  constructor(public readonly isBotFirst = true) {
     for (let x = 0; x < 3; x++) {
       for (let y = 0; y < 3; y++) {
         this.grid.push(new Cell(x, y));
@@ -35,10 +35,10 @@ export class Game {
   }
 
   get turnState(): CellState {
-    return this.turn % 2 === 0 && this.isXFirst ? CellState.x : CellState.o;
+    return this.turn % 2 === 0 && this.isBotFirst ? CellState.x : CellState.o;
   }
 
-  choose(cell: Cell): boolean | null | undefined {
+  claim(cell: Cell): boolean | null | undefined {
     if (cell.state !== null) return undefined;
     cell.state = this.turnState;
     this.turn++;

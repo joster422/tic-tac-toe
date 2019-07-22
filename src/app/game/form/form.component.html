@@ -1,14 +1,16 @@
 <form novalidate #form="ngForm">
-  <button type="button" (click)="subject.next()" (keypress)="subject.next()">
+  <fc-button (action)="subject.next()">
     🔄 Restart
-  </button>
-  <fc-toggle [(ngModel)]="model.isEnabled" name="isEnabled">
-    🤖 Bot play
+  </fc-button>
+  <fc-toggle [(ngModel)]="model.isBotEnabled" name="isBotEnabled" (ngModelChange)="restart$.next()">
+    Bot play 🤖
   </fc-toggle>
-  <fc-toggle [(ngModel)]="model.isFirst" name="isFirst" [disabled]="!model.isEnabled">
-    🤖 Bot first
+  <fc-toggle [(ngModel)]="model.isBotFirst" name="isBotFirst" (ngModelChange)="restart$.next()"
+    [disabled]="!model.isBotEnabled">
+    Bot first 🤖
   </fc-toggle>
-  <fc-toggle [(ngModel)]="model.isCenterFirst" name="isCenterFirst" [disabled]="!model.isEnabled || !model.isFirst">
-    🤖 Bot take center first
+  <fc-toggle [(ngModel)]="model.isBotCenterFirst" name="isBotCenterFirst" (ngModelChange)="restart$.next()"
+    [disabled]="!model.isBotEnabled || !model.isBotFirst">
+    Bot take center first 🤖
   </fc-toggle>
 </form>
