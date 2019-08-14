@@ -11,7 +11,7 @@ import { Form } from "./form.model";
 import { Subject } from "rxjs";
 
 @Component({
-  selector: "ttt-form[model]",
+  selector: "ttt-form[model][restart]",
   templateUrl: "./form.component.html",
   styleUrls: ["./form.component.scss"]
 })
@@ -20,15 +20,15 @@ export class FormComponent implements OnInit, OnDestroy {
 
   @Output() restart = new EventEmitter();
 
-  restart$ = new Subject();
+  restartSubject = new Subject();
 
   constructor() { }
 
   ngOnInit() {
-    this.restart$.pipe(debounceTime(500)).subscribe(() => this.restart.emit());
+    this.restartSubject.pipe(debounceTime(500)).subscribe(() => this.restart.emit());
   }
 
   ngOnDestroy() {
-    this.restart$.complete();
+    this.restartSubject.complete();
   }
 }

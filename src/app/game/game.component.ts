@@ -20,21 +20,21 @@ export class GameComponent {
 
   constructor() { }
 
-  claim(cell: Cell) {
+  async claim(cell: Cell) {
     if (!this.allowClicks) return;
-    switch (this.game.claim(cell)) {
-      case false:
-        this.form.isBotEnabled && this.botMove();
-        return;
-      case true:
-        this.game.turnState === CellState.o
-          ? this.endGame(`X Wins`)
-          : this.endGame(`O Wins`);
-        break;
+
+    switch (this.game.didWin(cell)) {
       case null:
-        // draw
         this.newGame();
-        break;
+        return;
+      case CellState.o:
+        await this.endGame(`O Wins`);
+        return;
+      case CellState.x:
+        await this.endGame(`X Wins`);
+        return;
+      case false && this.form.isBotEnabled:
+        this.botClaim();
     }
   }
 
@@ -43,40 +43,35 @@ export class GameComponent {
     if (!this.form.isBotEnabled) return;
     this.bot = new Bot(this.form.isBotCenterFirst);
     if (!this.form.isBotFirst) return;
-    this.botMove();
+    this.botClaim();
   }
 
-  private botMove() {
-    const didBotWin = this.game.claim(this.bot.getMove(this.game));
-    if (didBotWin === undefined) throw new Error('bot should never play a claimed cell');
-    if (didBotWin === false) return;
-    if (didBotWin === null) {
-      // draw
-      this.newGame();
-      return;
+  private async botClaim() {
+    switch (this.game.didWin(this.bot.getClaim(this.game))) {
+      case null:
+        this.newGame();
+        return;
+      case CellState.o:
+        await this.endGame(`Bot O Wins`)
+        return;
+      case CellState.x:
+        await this.endGame(`Bot X Wins`)
+        return;
+      case undefined:
+        throw new Error('bot should never play a claimed cell');
     }
-    this.game.turnState === CellState.o
-      ? this.endGame(`Bot X Wins`)
-      : this.endGame(`Bot O Wins`);
   }
 
-  private endGame(message: string) {
+  private async endGame(message: string) {
     this.allowClicks = false;
-    const winPath = this.game.paths.find(
-      path =>
-        path.every(cell => cell.state === CellState.x) ||
-        path.every(cell => cell.state === CellState.o)
-    );
-    if (winPath) {
-      winPath.forEach(cell => (cell.highlight = true));
-    }
-    setTimeout(() => {
-      if (winPath) {
-        winPath.forEach(cell => (cell.highlight = false));
-      }
-      alert(message);
-      this.newGame();
-      this.allowClicks = true;
-    }, 2000);
+    this.game.paths
+      .find(path => path.every(cell => cell.state === CellState.x) || path.every(cell => cell.state === CellState.o))!
+      .forEach(cell => (cell.highlight = true));
+
+    await new Promise(r => window.setTimeout(() => r(), 1000));
+
+    alert(message);
+    this.allowClicks = true;
+    this.newGame();
   }
 }

@@ -9,9 +9,9 @@ import { CellState } from './cell.enum';
 })
 export class CellComponent {
   @Input() cell!: Cell;
-  @Input() turnState!: CellState;
+  @Input() hoverState!: CellState;
 
-  @Output() claim = new EventEmitter();
+  @Output() click = new EventEmitter();
 
   cellState = CellState;
 
