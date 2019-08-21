@@ -68,7 +68,7 @@ export class GameComponent {
       .find(path => path.every(cell => cell.state === CellState.x) || path.every(cell => cell.state === CellState.o))!
       .forEach(cell => (cell.highlight = true));
 
-    await new Promise(r => window.setTimeout(() => r(), 2000));
+    await new Promise(r => window.setTimeout(() => r(), 1000));
 
     alert(message);
     this.allowClicks = true;

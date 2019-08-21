@@ -1,5 +1,8 @@
-<button type="button" [class.highlight]="cell.highlight" [disabled]="cell.state !== null" (click)="click.emit(cell)">
-    {{cell.state}}
+<button type="button" [class.x]="cell.state === cellState.x" [class.o]="cell.state === cellState.o"
+    [class.highlight]="cell.highlight" [disabled]="cell.state !== null" (click)="claim.emit(cell)">
+    <span>
+        {{cell.state}}
+    </span>
     <span *ngIf="cell.state === null" class="hover">
         {{hoverState}}
     </span>
