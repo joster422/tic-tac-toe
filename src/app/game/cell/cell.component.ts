@@ -11,7 +11,7 @@ export class CellComponent {
   @Input() cell!: Cell;
   @Input() hoverState!: CellState;
 
-  @Output() click = new EventEmitter();
+  @Output() claim = new EventEmitter();
 
   cellState = CellState;
 

@@ -33,8 +33,8 @@ export class GameComponent {
       case CellState.x:
         await this.endGame(`X Wins`);
         return;
-      case false && this.form.isBotEnabled:
-        this.botClaim();
+      case false:
+        this.form.isBotEnabled && this.botClaim();
     }
   }
 
@@ -68,7 +68,7 @@ export class GameComponent {
       .find(path => path.every(cell => cell.state === CellState.x) || path.every(cell => cell.state === CellState.o))!
       .forEach(cell => (cell.highlight = true));
 
-    await new Promise(r => window.setTimeout(() => r(), 1000));
+    await new Promise(r => window.setTimeout(() => r(), 2000));
 
     alert(message);
     this.allowClicks = true;
