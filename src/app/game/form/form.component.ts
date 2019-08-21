@@ -15,20 +15,11 @@ import { Subject } from "rxjs";
   templateUrl: "./form.component.html",
   styleUrls: ["./form.component.scss"]
 })
-export class FormComponent implements OnInit, OnDestroy {
+export class FormComponent {
+  @Input() disabled!: boolean;
   @Input() model!: Form;
 
   @Output() restart = new EventEmitter();
 
-  restartSubject = new Subject();
-
   constructor() { }
-
-  ngOnInit() {
-    this.restartSubject.pipe(debounceTime(500)).subscribe(() => this.restart.emit());
-  }
-
-  ngOnDestroy() {
-    this.restartSubject.complete();
-  }
 }
