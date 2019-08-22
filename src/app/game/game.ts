@@ -1,9 +1,8 @@
 import { Cell } from "./cell/cell";
-import { CellState } from "./cell/cell.enum";
 
 export class Game {
   grid: Cell[] = [];
-  turnCount = 0;
+  turn: 'x' | 'o' = 'x';
 
   constructor(public readonly isXFirst = true) {
     for (let x = 0; x < 3; x++) {
@@ -36,24 +35,18 @@ export class Game {
     return [...paths, diagonal1, diagonal2];
   }
 
-  get turn(): CellState {
-    return this.turnCount % 2 === 0 && this.isXFirst ? CellState.x : CellState.o;
-  }
-
-  didWin(cell: Cell): CellState | false | null | undefined {
-    if (cell.state !== null) return undefined;
+  didWin(cell: Cell) {
+    if (cell.state !== undefined) return undefined;
     cell.state = this.turn;
-    if (this.isDone) return cell.state;
-    if (this.grid.every(cell => cell.state !== null)) return null;
-    this.turnCount++;
-    return this.isDone;
+    if (this.winPath) return cell.state;
+    if (this.grid.every(cell => cell.state !== undefined)) return null;
+    this.turn = this.turn === 'x' ? 'o' : 'x';
+    return false;
   }
 
-  private get isDone(): boolean {
-    return this.paths.some(
-      path =>
-        path.every(cell => cell.state === CellState.x) ||
-        path.every(cell => cell.state === CellState.o)
+  get winPath() {
+    return this.paths.find(
+      path => path.every(cell => cell.state === 'x') || path.every(cell => cell.state === 'o')
     )
   }
 }

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
+
+import { Game } from './game';
 import { Bot } from './bot';
 import { Cell } from './cell/cell';
-import { Game } from './game';
-
-import { CellState } from './cell/cell.enum';
-import { Form } from './form/form.model';
+import { Form } from './form/form';
 
 @Component({
   selector: 'ttt-game',
@@ -13,9 +12,8 @@ import { Form } from './form/form.model';
 })
 export class GameComponent {
   allowClicks = true;
-  bot = new Bot();
-  cellState = CellState;
   game = new Game();
+  bot = new Bot();
   form = new Form();
 
   constructor() { }
@@ -27,10 +25,10 @@ export class GameComponent {
       case null:
         this.newGame();
         return;
-      case CellState.o:
+      case 'o':
         await this.endGame(`O Wins`);
         return;
-      case CellState.x:
+      case 'x':
         await this.endGame(`X Wins`);
         return;
       case false:
@@ -51,10 +49,10 @@ export class GameComponent {
       case null:
         this.newGame();
         return;
-      case CellState.o:
+      case 'o':
         await this.endGame(`Bot O Wins`)
         return;
-      case CellState.x:
+      case 'x':
         await this.endGame(`Bot X Wins`)
         return;
       case undefined:
@@ -64,12 +62,8 @@ export class GameComponent {
 
   private async endGame(message: string) {
     this.allowClicks = false;
-    this.game.paths
-      .find(path => path.every(cell => cell.state === CellState.x) || path.every(cell => cell.state === CellState.o))!
-      .forEach(cell => (cell.highlight = true));
-
+    this.game.winPath!.forEach(cell => (cell.highlight = true))
     await new Promise(r => window.setTimeout(() => r(), 1000));
-
     alert(message);
     this.allowClicks = true;
     this.newGame();

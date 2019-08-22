@@ -1,14 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input,
-  OnDestroy
-} from "@angular/core";
-import { debounceTime } from "rxjs/operators";
-import { Form } from "./form.model";
-import { Subject } from "rxjs";
+import { Component, Output, EventEmitter, Input } from "@angular/core";
+import { Form } from "./form";
 
 @Component({
   selector: "ttt-form[model][restart]",

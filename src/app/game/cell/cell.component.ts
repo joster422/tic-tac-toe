@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Cell } from './cell';
-import { CellState } from './cell.enum';
 
 @Component({
   selector: 'ttt-cell',
@@ -9,11 +8,9 @@ import { CellState } from './cell.enum';
 })
 export class CellComponent {
   @Input() cell!: Cell;
-  @Input() hoverState!: CellState;
+  @Input() hoverState!: 'x' | 'o';
 
   @Output() claim = new EventEmitter();
-
-  cellState = CellState;
 
   constructor() { }
 }
