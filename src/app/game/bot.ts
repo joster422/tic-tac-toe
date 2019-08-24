@@ -28,9 +28,8 @@ export class Bot {
     const notLosePath = urgentPaths.find(path => path.every(cell => cell.state === opponent || cell.state === undefined));
     if (notLosePath) return notLosePath.find(cell => cell.state === undefined)!;
 
-    if (blankCells.length === 6 && safeCornerCells.length !== 4) {
+    if (blankCells.length === 6 && safeCornerCells.length !== 4)
       return blankCells!.find(cell => cell.x === 1 || cell.y === 1)!;
-    }
 
     if (safeCornerCells.length > 0) return safeCornerCells[0];
 
