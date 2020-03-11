@@ -1,4 +1,13 @@
 <div id="game">
-  <ttt-cell *ngFor="let cell of game.grid" [cell]="cell" [hoverState]="game.turn" (claim)="claim(cell)"></ttt-cell>
+  <ttt-cell
+    *ngFor="let cell of game.grid"
+    [cell]="cell"
+    [hoverState]="game.turn"
+    (claim)="claim(cell)"
+  ></ttt-cell>
 </div>
-<ttt-form [disabled]="!allowClicks" [model]="form" (restart)="newGame()"></ttt-form>
+<ttt-form
+  [disabled]="!allowClicks"
+  [model]="form"
+  (restart)="newGame()"
+></ttt-form>

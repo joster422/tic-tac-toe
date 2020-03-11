@@ -32,7 +32,8 @@ export class GameComponent {
         await this.endGame(`X Wins`);
         return;
       case false:
-        this.form.isBotEnabled && this.botClaim();
+        if (this.form.isBotEnabled)
+          this.botClaim();
     }
   }
 
@@ -62,7 +63,8 @@ export class GameComponent {
 
   private async endGame(message: string) {
     this.allowClicks = false;
-    this.game.winPath!.forEach(cell => (cell.highlight = true))
+    if (this.game.winPath !== undefined)
+      this.game.winPath.forEach(cell => (cell.highlight = true))
     await new Promise(r => window.setTimeout(() => r(), 1000));
     alert(message);
     this.allowClicks = true;

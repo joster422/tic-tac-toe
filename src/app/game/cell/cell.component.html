@@ -1,12 +1,21 @@
-<button type="button" [class.highlight]="cell.highlight" [class.o]="cell.state === 'o'" [class.x]="cell.state === 'x'"
-    [disabled]="cell.state !== undefined" (click)="claim.emit(cell)">
-    <span *ngIf="cell.state === 'x'">
-        ❌
-    </span>
-    <span *ngIf="cell.state === 'o'">
-        ⭕
-    </span>
-    <span *ngIf="cell.state === undefined" class="hover">
-        {{hoverState === 'x' ? '❌' : '⭕'}}
-    </span>
+<button
+  type="button"
+  [class.highlight]="cell.highlight"
+  [class.o]="cell.state === 'o'"
+  [class.x]="cell.state === 'x'"
+  [disabled]="cell.state !== undefined"
+  (click)="claim.emit(cell)"
+>
+  <span *ngIf="cell.state === 'x'">
+    ❌
+  </span>
+  <span *ngIf="cell.state === 'o'">
+    ⭕
+  </span>
+  <span
+    *ngIf="cell.state === undefined"
+    class="hover"
+  >
+    {{hoverState === 'x' ? '❌' : '⭕'}}
+  </span>
 </button>
