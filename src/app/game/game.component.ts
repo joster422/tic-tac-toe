@@ -12,33 +12,33 @@ import { Form } from './form/form';
 })
 export class GameComponent {
   allowClicks = true;
-  game = new Game();
+  game!: Game;
   bot = new Bot();
   form = new Form();
 
-  constructor() { }
+  constructor() {
+    this.newGame();
+  }
 
   async claim(cell: Cell) {
     if (!this.allowClicks) return;
 
-    switch (this.game.didWin(cell)) {
-      case null:
-        this.newGame();
-        return;
-      case 'o':
-        await this.endGame(`O Wins`);
-        return;
-      case 'x':
-        await this.endGame(`X Wins`);
-        return;
-      case false:
-        if (this.form.isBotEnabled)
-          this.botClaim();
+    if (this.game.play(cell) === true) {
+      this.endGame(this.game.turn === 'o' ? 'O Wins' : 'X Wins');
+      return;
     }
+
+    if (this.areNoMovesRemaining) {
+      this.newGame();
+      return;
+    }
+
+    if (this.form.isBotEnabled)
+      this.botClaim();
   }
 
   newGame() {
-    this.game = new Game();
+    this.game = new Game(this.createGrid());
     if (!this.form.isBotEnabled) return;
     this.bot = new Bot(this.form.isBotCenterFirst);
     if (!this.form.isBotFirst) return;
@@ -46,28 +46,33 @@ export class GameComponent {
   }
 
   private async botClaim() {
-    switch (this.game.didWin(this.bot.getClaim(this.game))) {
-      case null:
-        this.newGame();
-        return;
-      case 'o':
-        await this.endGame(`Bot O Wins`)
-        return;
-      case 'x':
-        await this.endGame(`Bot X Wins`)
-        return;
-      case undefined:
-        throw new Error('bot should never play a claimed cell');
+    if (this.game.play(this.bot.getClaim(this.game)) === true) {
+      this.endGame(this.game.turn === 'o' ? 'Bot O Wins' : 'Bot X Wins');
+      return;
     }
+    if (this.areNoMovesRemaining)
+      this.newGame();
   }
 
   private async endGame(message: string) {
     this.allowClicks = false;
     if (this.game.winPath !== undefined)
-      this.game.winPath.forEach(cell => (cell.highlight = true))
+      this.game.winPath.forEach(cell => (cell.highlight = true));
     await new Promise(r => window.setTimeout(() => r(), 1000));
     alert(message);
     this.allowClicks = true;
     this.newGame();
+  }
+
+  private get areNoMovesRemaining() {
+    return this.game.grid.every(cell => cell.state !== undefined);
+  }
+
+  private createGrid() {
+    const temp = [];
+    for (let x = 0; x < 3; x++)
+      for (let y = 0; y < 3; y++)
+        temp.push(new Cell(x, y));
+    return temp;
   }
 }

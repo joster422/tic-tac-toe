@@ -1,15 +1,16 @@
-import { Cell } from "./cell/cell";
+import { Cell } from './cell/cell';
 
 export class Game {
-  grid: Cell[] = [];
   turn: 'x' | 'o' = 'x';
 
-  constructor(public readonly isXFirst = true) {
-    for (let x = 0; x < 3; x++) {
-      for (let y = 0; y < 3; y++) {
-        this.grid.push(new Cell(x, y));
-      }
-    }
+  constructor(public grid: Cell[]) {
+    if (grid.filter(cell => cell.state === 'x').length > grid.filter(cell => cell.state === 'o').length)
+      this.turn = 'o';
+  }
+
+  get winPath() {
+    return this.paths
+      .find(path => path.every(cell => cell.state === 'x') || path.every(cell => cell.state === 'o'));
   }
 
   get paths(): Cell[][] {
@@ -21,12 +22,12 @@ export class Game {
       let rows: Cell[] = [];
       let columns: Cell[] = [];
 
-      diagonal1.push(this.grid.find(cell => cell.x === i && cell.y === i)!);
-      diagonal2.push(this.grid.find(cell => cell.x === i && cell.y === 2 - i)!);
+      diagonal1 = [...diagonal1, ...this.grid.filter(cell => cell.x === i && cell.y === i)];
+      diagonal2 = [...diagonal2, ...this.grid.filter(cell => cell.x === i && cell.y === 2 - i)];
 
       for (let j = 0; j < 3; j++) {
-        rows.push(this.grid.find(cell => cell.x === i && cell.y === j)!);
-        columns.push(this.grid.find(cell => cell.x === j && cell.y === i)!);
+        rows = [...rows, ...this.grid.filter(cell => cell.x === i && cell.y === j)];
+        columns = [...columns, ...this.grid.filter(cell => cell.x === j && cell.y === i)];
       }
 
       paths = [...paths, rows, columns];
@@ -35,18 +36,21 @@ export class Game {
     return [...paths, diagonal1, diagonal2];
   }
 
-  didWin(cell: Cell) {
-    if (cell.state !== undefined) return undefined;
+  get moves(): Cell[] {
+    return this.grid.filter(cell => cell.state === undefined);
+  }
+
+  play(cell: Cell): boolean {
+    if (cell.state !== undefined) {
+      debugger;
+      throw new Error('cannot play non-empty cell');
+    }
     cell.state = this.turn;
-    if (this.winPath) return cell.state;
-    if (this.grid.every(cell => cell.state !== undefined)) return null;
+    if (this.winPath !== undefined)
+      return true;
     this.turn = this.turn === 'x' ? 'o' : 'x';
     return false;
   }
 
-  get winPath() {
-    return this.paths.find(
-      path => path.every(cell => cell.state === 'x') || path.every(cell => cell.state === 'o')
-    )
-  }
+
 }
