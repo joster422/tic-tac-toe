@@ -6,16 +6,31 @@
   [disabled]="cell.state !== undefined"
   (click)="claim.emit(cell)"
 >
-  <span *ngIf="cell.state === 'x'">
-    ❌
-  </span>
-  <span *ngIf="cell.state === 'o'">
-    ⭕
-  </span>
+  <img
+    *ngIf="cell.state === 'x'"
+    draggable="false"
+    src="assets/x.svg"
+  >
+  <img
+    *ngIf="cell.state === 'o'"
+    draggable="false"
+    src="assets/o.svg"
+  >
   <span
     *ngIf="cell.state === undefined"
     class="hover"
   >
-    {{hoverState === 'x' ? '❌' : '⭕'}}
+    <img
+      *ngIf="hoverState === 'x'"
+      draggable="false"
+      class="x"
+      src="assets/x.svg"
+    >
+    <img
+      *ngIf="hoverState === 'o'"
+      draggable="false"
+      class="o"
+      src="assets/o.svg"
+    >
   </span>
 </button>

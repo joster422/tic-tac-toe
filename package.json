@@ -3,8 +3,10 @@
   "version": "0.1.1",
   "scripts": {
     "ghp-build": "ng build --prod --base-href=https://joster422.github.io/tic-tac-toe/",
-    "ghp-deploy": "git subtree push --prefix dist origin gh-pages",
-    "gh-pages": "npm run ghp-build && npm run ghp-deploy"
+    "ghp-deploy": "git add . && git commit --message=\"chore - gh-pages deploy\" && git push",
+    "ghp-remove-old": "git push origin --delete gh-pages",
+    "ghp-push": "git subtree push --prefix dist origin gh-pages",
+    "gh-pages": "npm run ghp-build && npm run ghp-deploy && npm run ghp-remove-old && npm run ghp-push"
   },
   "private": true,
   "dependencies": {
@@ -16,7 +18,8 @@
     "@angular/platform-browser": "~9.0.5",
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
-    "@joster/form-control": "0.0.2",
+    "@angular/service-worker": "~9.0.5",
+    "@joster/form-control": "0.0.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

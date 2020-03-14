@@ -23,37 +23,41 @@ button {
 
   &:hover,
   &:focus {
-    outline: none;
-    box-shadow: inset 0 0 0.5em lightgrey;
-    &:disabled {
-      box-shadow: none;
-    }
     .hover {
       display: inherit;
       animation: fadeIn 1s ease;
     }
   }
 
-  &.highlight.x span {
+  &.highlight.x > img {
     animation: spinX 1s linear infinite;
   }
 
-  &.highlight.o span {
+  &.highlight.o > img {
     animation: spinO 1s linear infinite;
   }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0 }
+  from {
+    opacity: 0;
+  }
 }
 
-
 @keyframes spinO {
-  from { transform: rotateY(0deg) }
-  to { transform: rotateY(360deg) }
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 
 @keyframes spinX {
-  from { transform: rotate(0deg) }
-  to { transform: rotate(360deg) }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -3,6 +3,8 @@
     *ngFor="let cell of game.grid"
     [cell]="cell"
     [hoverState]="game.turn"
+    [style.grid-column]="cell.x + 1"
+    [style.grid-row]="cell.y + 1"
     (claim)="claim(cell)"
   ></ttt-cell>
 </div>
