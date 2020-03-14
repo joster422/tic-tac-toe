@@ -1,0 +1,86 @@
+{
+  "configVersion": 1,
+  "timestamp": 1584216149954,
+  "index": "https://joster422.github.io/tic-tac-toe/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://joster422.github.io/tic-tac-toe/favicon.ico",
+        "https://joster422.github.io/tic-tac-toe/index.html",
+        "https://joster422.github.io/tic-tac-toe/main-es2015.22b373fd8a569a247efb.js",
+        "https://joster422.github.io/tic-tac-toe/main-es5.22b373fd8a569a247efb.js",
+        "https://joster422.github.io/tic-tac-toe/manifest.webmanifest",
+        "https://joster422.github.io/tic-tac-toe/polyfills-es2015.442fa3cc45520cc0d518.js",
+        "https://joster422.github.io/tic-tac-toe/polyfills-es5.e94ba732172de6683982.js",
+        "https://joster422.github.io/tic-tac-toe/runtime-es2015.0811dcefd377500b5b1a.js",
+        "https://joster422.github.io/tic-tac-toe/runtime-es5.0811dcefd377500b5b1a.js",
+        "https://joster422.github.io/tic-tac-toe/styles.59950c7fbf18589c7427.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-128x128.png",
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-144x144.png",
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-152x152.png",
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-192x192.png",
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-384x384.png",
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-512x512.png",
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-72x72.png",
+        "https://joster422.github.io/tic-tac-toe/assets/icons/icon-96x96.png",
+        "https://joster422.github.io/tic-tac-toe/assets/logo.svg",
+        "https://joster422.github.io/tic-tac-toe/assets/o.svg",
+        "https://joster422.github.io/tic-tac-toe/assets/x.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-128x128.png": "e3fde8a226198f75d4983770ba5236db69fbce20",
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-144x144.png": "495c4d1746587b5f52ec9a530438af4a29cbd5bd",
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-152x152.png": "b8abcf129a61a30f3c38d1fdd8c0dae06b7fed3c",
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-192x192.png": "085adbd67eb84c958e847ea25577a97ba6f54e1a",
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-384x384.png": "4129564821eda55eba4f22786be968f48342a7c1",
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-512x512.png": "9bf29afe0ce8de0d2087cef4fa99460ad0b0cee0",
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-72x72.png": "85aad4b9fb9f40e0d50bb7b4a351980ce9060d8c",
+    "https://joster422.github.io/tic-tac-toe/assets/icons/icon-96x96.png": "be0b7bc78851963253be49ec63d4cc79aed5ff39",
+    "https://joster422.github.io/tic-tac-toe/assets/logo.svg": "45fb2492d305f33266c2b0268f7c259bf1438888",
+    "https://joster422.github.io/tic-tac-toe/assets/o.svg": "0ef4df2eda538b06e909bd75b3c37565cbb04207",
+    "https://joster422.github.io/tic-tac-toe/assets/x.svg": "7637764475903576b676716ea651ca22cf97572f",
+    "https://joster422.github.io/tic-tac-toe/favicon.ico": "11b3cc1b300e4883d4fcef3eca21b88681034350",
+    "https://joster422.github.io/tic-tac-toe/index.html": "ca2a2196e06491abc5df60db777f988b4f2c98ed",
+    "https://joster422.github.io/tic-tac-toe/main-es2015.22b373fd8a569a247efb.js": "633720824e9d63d388656d7a34103d0d1ed7ab13",
+    "https://joster422.github.io/tic-tac-toe/main-es5.22b373fd8a569a247efb.js": "ef05ba611346a453ac3bacaac774d655d37c4095",
+    "https://joster422.github.io/tic-tac-toe/manifest.webmanifest": "da287c489adb6998a5e41ffd03e1f746a62c6622",
+    "https://joster422.github.io/tic-tac-toe/polyfills-es2015.442fa3cc45520cc0d518.js": "8779ed8d9bf0580e1b50b352a9b8fd520be24433",
+    "https://joster422.github.io/tic-tac-toe/polyfills-es5.e94ba732172de6683982.js": "29c3dfd16faa921dd49165f318f9eed12a2f3be7",
+    "https://joster422.github.io/tic-tac-toe/runtime-es2015.0811dcefd377500b5b1a.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://joster422.github.io/tic-tac-toe/runtime-es5.0811dcefd377500b5b1a.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://joster422.github.io/tic-tac-toe/styles.59950c7fbf18589c7427.css": "0d0aaf48b46d4bfc37373c75db4a8b6b18f8fe17"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
