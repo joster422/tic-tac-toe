@@ -20,15 +20,15 @@ export class GameComponent {
     this.newGame();
   }
 
-  async claim(cell: Cell) {
+  claim(cell: Cell) {
     if (!this.allowClicks) return;
 
-    if (this.game.play(cell) === true) {
+    if (this.game.win(cell.x, cell.y)) {
       this.endGame(this.game.turn === 'o' ? 'O Wins' : 'X Wins');
       return;
     }
 
-    if (this.areNoMovesRemaining) {
+    if (this.game.areNoMovesRemaining) {
       this.newGame();
       return;
     }
@@ -46,26 +46,25 @@ export class GameComponent {
   }
 
   private async botClaim() {
-    if (this.game.play(this.bot.getClaim(this.game)) === true) {
+    this.allowClicks = false;
+    const claim = await this.bot.getClaim(this.game);
+    this.allowClicks = true;
+
+    if (this.game.win(claim.x, claim.y)) {
       this.endGame(this.game.turn === 'o' ? 'Bot O Wins' : 'Bot X Wins');
       return;
     }
-    if (this.areNoMovesRemaining)
+
+    if (this.game.areNoMovesRemaining)
       this.newGame();
   }
 
   private async endGame(message: string) {
     this.allowClicks = false;
-    if (this.game.winPath !== undefined)
-      this.game.winPath.forEach(cell => (cell.highlight = true));
     await new Promise(r => window.setTimeout(() => r(), 1000));
     alert(message);
     this.allowClicks = true;
     this.newGame();
-  }
-
-  private get areNoMovesRemaining() {
-    return this.game.grid.every(cell => cell.state !== undefined);
   }
 
   private createGrid() {

@@ -8,11 +8,6 @@ export class Game {
       this.turn = 'o';
   }
 
-  get winPath() {
-    return this.paths
-      .find(path => path.every(cell => cell.state === 'x') || path.every(cell => cell.state === 'o'));
-  }
-
   get paths(): Cell[][] {
     let paths: Cell[][] = [];
     let diagonal1: Cell[] = [];
@@ -40,9 +35,18 @@ export class Game {
     return this.grid.filter(cell => cell.state === undefined);
   }
 
-  play(cell: Cell): boolean {
-    if (cell.state !== undefined) {
-      debugger;
+  get winPath() {
+    return this.paths
+      .find(path => path.every(cell => cell.state === 'x') || path.every(cell => cell.state === 'o'));
+  }
+
+  get areNoMovesRemaining() {
+    return this.grid.every(cell => cell.state !== undefined);
+  }
+
+  win(x: number, y: number): boolean {
+    const cell = this.grid.find(c => c.x === x && c.y === y);
+    if (cell === undefined || cell.state !== undefined) {
       throw new Error('cannot play non-empty cell');
     }
     cell.state = this.turn;

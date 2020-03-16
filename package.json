@@ -1,6 +1,6 @@
 {
   "name": "tic-tac-toe",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "ghp-build": "ng build --prod --base-href=https://joster422.github.io/tic-tac-toe/",
     "ghp-deploy": "git add . && git commit --message=\"chore - gh-pages deploy\" && git push",

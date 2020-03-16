@@ -2,7 +2,9 @@
   <ttt-cell
     *ngFor="let cell of game.grid"
     [cell]="cell"
-    [hoverState]="game.turn"
+    [disabled]="allowClicks === false"
+    [gameTurn]="game.turn"
+    [highlight]="game.winPath?.includes(cell)"
     [style.grid-column]="cell.x + 1"
     [style.grid-row]="cell.y + 1"
     (claim)="claim(cell)"

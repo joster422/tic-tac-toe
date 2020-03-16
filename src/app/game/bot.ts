@@ -5,65 +5,53 @@ export class Bot {
 
   constructor(private readonly canClaimCenterFirst = true) { }
 
-  getClaim(game: Game): Cell {
-    const safeCenterCell = game.moves.find(cell => cell.x === 1 && cell.y === 1);
-    const safeCornerCells = game.moves.filter(cell => cell.x !== 1 && cell.y !== 1);
+  async getClaim(game: Game): Promise<Cell> {
+    const centerMove = game.moves.find(cell => cell.x === 1 && cell.y === 1);
+    const cornerMoves = game.moves.filter(cell => cell.x !== 1 && cell.y !== 1);
+    const turn0 = game.moves.length === 9;
+    const turn1 = game.moves.length === 8;
 
-    if (game.moves.length === 9 && safeCenterCell !== undefined && safeCornerCells.length > 0)
+    if (turn0 && centerMove !== undefined)
       return this.canClaimCenterFirst
-        ? safeCenterCell
-        : safeCornerCells[Math.floor(Math.random() * safeCornerCells.length)];
+        ? centerMove
+        : cornerMoves[Math.floor(Math.random() * cornerMoves.length)];
 
-    if (game.moves.length === 8 && safeCenterCell === undefined && safeCornerCells.length > 0)
-      return safeCornerCells[Math.floor(Math.random() * safeCornerCells.length)];
+    if (turn1)
+      return centerMove !== undefined
+        ? centerMove
+        : cornerMoves[Math.floor(Math.random() * cornerMoves.length)];
 
-    const urgentPaths = game.paths
-      .filter(path => path.filter(cell => cell.state === undefined).length === 1)
-      .filter(path => {
-        const statePaths = path.filter(cell => cell.state !== undefined);
-        return statePaths.every(cell => cell.state === statePaths[0].state);
-      });
+    const scores = await this.scores(game, game.turn);
 
-    const win = this.getUrgentCell(urgentPaths, game.turn);
-    if (win !== undefined)
-      return win;
+    let maxScoreIndex = 0;
+    for (let i = 1; i < scores.length; i++)
+      maxScoreIndex = scores[maxScoreIndex] > scores[i] ? maxScoreIndex : i;
 
-    const notLose = this.getUrgentCell(urgentPaths, game.turn === 'x' ? 'o' : 'x');
-    if (notLose !== undefined)
-      return notLose;
+    const maxScoreIndexs = scores
+      .map((score, index) => score === scores[maxScoreIndex] ? index : -1)
+      .filter(score => score !== -1);
 
-    if (safeCenterCell !== undefined)
-      return safeCenterCell;
-
-    if (safeCornerCells.length > 0)
-      return safeCornerCells[Math.floor(Math.random() * safeCornerCells.length)];
-
-    if (game.moves.length > 0 && game.moves.length <= 2)
-      return game.moves[Math.floor(Math.random() * game.moves.length)];
-
-    throw new Error('incorrect grid layout');
+    return game.moves[maxScoreIndexs[Math.floor(Math.random() * maxScoreIndexs.length)]];
   }
 
-  private getUrgentCell(paths: Cell[][], turn: 'x' | 'o'): Cell | undefined {
-    for (const path of paths)
-      if (path.every(cell => cell.state === turn || cell.state === undefined)) {
-        const temp = path.find(cell => cell.state === undefined);
-        if (temp === undefined) throw new Error('urgentPaths has failed: each path should have 1 empty cell');
-        return temp;
-      }
-    return undefined;
-  }
+  private async scores(game: Game, turn: 'x' | 'o', depth = 0): Promise<number[]> {
+    return Promise.all(game.moves.map(async move => {
+      const gridCopy = JSON.parse(JSON.stringify(game.grid));
+      const gameCopy = new Game(gridCopy);
 
-  // todo
-  private async score(game: Game, cell: Cell): Promise<number> {
-    const newGame = new Game(game.grid);
-    if (newGame.play(cell))
-      return 1;
+      if (gameCopy.win(move.x, move.y))
+        return gameCopy.turn === turn
+          ? (100 - depth)
+          : (-100 + depth);
 
-    let sum = 0;
-    for (const move of newGame.moves)
-      sum += await this.score(newGame, move);
+      if (gameCopy.areNoMovesRemaining)
+        return 0;
 
-    return sum;
+      const newScores = await this.scores(gameCopy, turn, depth + 1);
+
+      return gameCopy.turn === turn
+        ? Math.max(...newScores)
+        : Math.min(...newScores);
+    }));
   }
 }
