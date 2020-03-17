@@ -1,16 +1,16 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
-  "index": "/tic-tac-toe/index.html",
+  "index": "/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "resources": {
         "files": [
-          "/tic-tac-toe/index.html",
-          "/tic-tac-toe/manifest.webmanifest",
-          "/tic-tac-toe/*.css",
-          "/tic-tac-toe/*.js"
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
         ]
       }
     },
@@ -20,8 +20,7 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/tic-tac-toe/assets/**",
-          "/tic-tac-toe/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/assets/**"
         ]
       }
     }
