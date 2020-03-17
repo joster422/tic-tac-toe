@@ -2,7 +2,7 @@
   "name": "tic-tac-toe",
   "version": "0.1.2",
   "scripts": {
-    "ghp-build": "ng build --prod --base-href=/tic-tac-toe/",
+    "ghp-build": "ng build --prod",
     "ghp-deploy": "git add . && git commit --message=\"chore - gh-pages deploy\" && git push",
     "ghp-remove-old": "git push origin --delete gh-pages",
     "ghp-push": "git subtree push --prefix dist origin gh-pages",
