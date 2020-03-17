@@ -4,7 +4,7 @@
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
-  "start_url": "https://joster422.github.io/tic-tac-toe/",
+  "start_url": "./tic-tac-toe/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
