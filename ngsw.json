@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1584423566825,
-  "index": "/tic-tac-toe/tic-tac-toe/index.html",
+  "timestamp": 1584424005266,
+  "index": "/tic-tac-toe/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -56,7 +56,7 @@
     "/tic-tac-toe/index.html": "f96276f1d144570af99651e4337bc20b8d291ea1",
     "/tic-tac-toe/main-es2015.1e79d0a09c9f5363106e.js": "d5fb9f26d4ef7930a69cbd8085229a337a69366e",
     "/tic-tac-toe/main-es5.1e79d0a09c9f5363106e.js": "519228d06fbb9060a0413307e5445456dde46190",
-    "/tic-tac-toe/manifest.webmanifest": "9c4c360b0ef39bad13f7471f4ce1e69400336f64",
+    "/tic-tac-toe/manifest.webmanifest": "f3b97117bc4af81e66da5688e9a6cebd944aea5e",
     "/tic-tac-toe/polyfills-es2015.442fa3cc45520cc0d518.js": "8779ed8d9bf0580e1b50b352a9b8fd520be24433",
     "/tic-tac-toe/polyfills-es5.e94ba732172de6683982.js": "29c3dfd16faa921dd49165f318f9eed12a2f3be7",
     "/tic-tac-toe/runtime-es2015.0811dcefd377500b5b1a.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
