@@ -20,7 +20,8 @@ import { environment } from '../environments/environment';
     FormsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('./ngsw-worker.js', {
-      enabled: environment.production
+      enabled: environment.production,
+      registrationStrategy: 'registerImmediately'
     })
   ],
   providers: [],
