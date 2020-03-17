@@ -19,7 +19,9 @@ import { environment } from '../environments/environment';
     FormControlModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register(
+      '/tic-tac-toe/ngsw-worker.js',
+      { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
