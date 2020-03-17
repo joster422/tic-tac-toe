@@ -3,7 +3,7 @@
   "theme_color": "#fafafa",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/tic-tac-toe/",
+  "scope": ".",
   "start_url": "./",
   "icons": [
     {
