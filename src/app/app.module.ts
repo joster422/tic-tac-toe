@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
     FormControlModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register('./ngsw-worker.js', {
       enabled: environment.production
     })
   ],
