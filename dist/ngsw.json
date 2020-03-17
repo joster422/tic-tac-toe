@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1584404528653,
+  "timestamp": 1584405085380,
   "index": "https://joster422.github.io/tic-tac-toe/index.html",
   "assetGroups": [
     {
@@ -56,7 +56,7 @@
     "https://joster422.github.io/tic-tac-toe/index.html": "cf5fadf85aa4a9a565b4aa155a0582d91c9647f9",
     "https://joster422.github.io/tic-tac-toe/main-es2015.1b599d46dff856dd037b.js": "95d756baa3abbfadb53b37313d6b7338020b74c9",
     "https://joster422.github.io/tic-tac-toe/main-es5.1b599d46dff856dd037b.js": "4823ab543f06ad1bb7e14716b735d3f840cbfe00",
-    "https://joster422.github.io/tic-tac-toe/manifest.webmanifest": "bbbfec0e4f2535259b535d554de801dbd4441481",
+    "https://joster422.github.io/tic-tac-toe/manifest.webmanifest": "7c44dd8553353c6612f3e4ba2ae8a9f16872c280",
     "https://joster422.github.io/tic-tac-toe/polyfills-es2015.442fa3cc45520cc0d518.js": "8779ed8d9bf0580e1b50b352a9b8fd520be24433",
     "https://joster422.github.io/tic-tac-toe/polyfills-es5.e94ba732172de6683982.js": "29c3dfd16faa921dd49165f318f9eed12a2f3be7",
     "https://joster422.github.io/tic-tac-toe/runtime-es2015.0811dcefd377500b5b1a.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",

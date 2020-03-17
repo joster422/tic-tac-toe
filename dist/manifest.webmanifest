@@ -3,7 +3,7 @@
   "theme_color": "#fafafa",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "https://joster422.github.io/tic-tac-toe/",
+  "scope": "./",
   "start_url": "https://joster422.github.io/tic-tac-toe/",
   "icons": [
     {
