@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1584323948610,
+  "timestamp": 1584403470266,
   "index": "https://joster422.github.io/tic-tac-toe/index.html",
   "assetGroups": [
     {
@@ -9,8 +9,8 @@
       "updateMode": "prefetch",
       "urls": [
         "https://joster422.github.io/tic-tac-toe/index.html",
-        "https://joster422.github.io/tic-tac-toe/main-es2015.2382ad3d6b6eb3affcf2.js",
-        "https://joster422.github.io/tic-tac-toe/main-es5.2382ad3d6b6eb3affcf2.js",
+        "https://joster422.github.io/tic-tac-toe/main-es2015.070499e6f8035628685b.js",
+        "https://joster422.github.io/tic-tac-toe/main-es5.070499e6f8035628685b.js",
         "https://joster422.github.io/tic-tac-toe/manifest.webmanifest",
         "https://joster422.github.io/tic-tac-toe/polyfills-es2015.442fa3cc45520cc0d518.js",
         "https://joster422.github.io/tic-tac-toe/polyfills-es5.e94ba732172de6683982.js",
@@ -53,9 +53,9 @@
     "https://joster422.github.io/tic-tac-toe/assets/logo.svg": "45fb2492d305f33266c2b0268f7c259bf1438888",
     "https://joster422.github.io/tic-tac-toe/assets/o.svg": "0ef4df2eda538b06e909bd75b3c37565cbb04207",
     "https://joster422.github.io/tic-tac-toe/assets/x.svg": "7637764475903576b676716ea651ca22cf97572f",
-    "https://joster422.github.io/tic-tac-toe/index.html": "aa241e5fa638f750418d2998443514fb3b3a143c",
-    "https://joster422.github.io/tic-tac-toe/main-es2015.2382ad3d6b6eb3affcf2.js": "133bff5d2a34913a7432b6bc599bc72d7e6f8493",
-    "https://joster422.github.io/tic-tac-toe/main-es5.2382ad3d6b6eb3affcf2.js": "7a8792da9910db1796b250ed6ea306c429f9ee28",
+    "https://joster422.github.io/tic-tac-toe/index.html": "42421b84d0a2999003e3a1a2c07dc48a65f1c008",
+    "https://joster422.github.io/tic-tac-toe/main-es2015.070499e6f8035628685b.js": "45df0b1fd8b5799ec4370acddddd625694bd5783",
+    "https://joster422.github.io/tic-tac-toe/main-es5.070499e6f8035628685b.js": "d2da872c30bad08e88f42f0c7df7f47443e1c5f8",
     "https://joster422.github.io/tic-tac-toe/manifest.webmanifest": "bbbfec0e4f2535259b535d554de801dbd4441481",
     "https://joster422.github.io/tic-tac-toe/polyfills-es2015.442fa3cc45520cc0d518.js": "8779ed8d9bf0580e1b50b352a9b8fd520be24433",
     "https://joster422.github.io/tic-tac-toe/polyfills-es5.e94ba732172de6683982.js": "29c3dfd16faa921dd49165f318f9eed12a2f3be7",
