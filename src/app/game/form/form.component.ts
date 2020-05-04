@@ -7,6 +7,11 @@ import { Form } from './form';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
+  static booleans = [
+    { key: true, value: 'Yes' },
+    { key: false, value: 'No' }
+  ];
+
   @Input() disabled = false;
   @Input() model!: Form;
 
