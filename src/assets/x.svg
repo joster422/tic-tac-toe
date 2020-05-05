@@ -1,11 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-<radialGradient id="SVGID_1_" cx="306.5" cy="-295.5313" r="40.0161" gradientTransform="matrix(1 0 0 -1 -256 -245)" gradientUnits="userSpaceOnUse">
-	<stop  offset="0" style="stop-color:#224477"/>
-	<stop  offset="1" style="stop-color:#000000"/>
-</radialGradient>
-<polygon fill="url(#SVGID_1_)" stroke="#000000" stroke-miterlimit="10" points="20,90 10,80 40,50 10,20
-	20,10 50,40 80,10 90,20 60,50 90,80 80,90 50,60 "/>
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="100%"
+  viewBox="0 0 100 100"
+>
+  <radialGradient
+    id="x-grad"
+    cx="50%"
+    cy="50%"
+    r="50%"
+  >
+    <stop
+      offset="0%"
+      stop-color="#224477"
+    />
+    <stop
+      offset="100%"
+      stop-color="#000000"
+    />
+  </radialGradient>
+  <polygon
+    fill="url(#x-grad)"
+    stroke="#000000"
+    points="20,90
+      10,80
+      40,50
+      10,20
+      20,10
+      50,40
+      80,10
+      90,20
+      60,50
+      90,80
+      80,90
+      50,60"
+  />
 </svg>

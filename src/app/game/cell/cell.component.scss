@@ -36,6 +36,10 @@ button {
   &.highlight.o > img {
     animation: spinO 1s linear infinite;
   }
+
+  > img {
+    width: 100%;
+  }
 }
 
 @keyframes fadeIn {

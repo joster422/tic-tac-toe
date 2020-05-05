@@ -7,7 +7,7 @@ import { Form } from './form';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-  static booleans = [
+  booleans = [
     { key: true, value: 'Yes' },
     { key: false, value: 'No' }
   ];

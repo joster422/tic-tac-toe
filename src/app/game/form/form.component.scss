@@ -1,15 +1,29 @@
+$breakpoint: 635px;
+
 form {
   margin: auto;
   padding: 1em;
-  max-width: 500px;
+  max-width: $breakpoint;
 
   > div {
     text-align: center;
+    > fc-button {
+      display: inline-block;
+    }
   }
 
   > fieldset {
     padding: 1em;
     border: 1px solid black;
     box-shadow: 0.2em 0.2em 0.2em 0 lightgrey;
+
+    > div {
+      display: grid;
+      grid-gap: 1em;
+      grid-template-columns: repeat(2, 1fr);
+      @media screen and (min-width: $breakpoint) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   }
 }

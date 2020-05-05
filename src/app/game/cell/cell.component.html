@@ -16,21 +16,10 @@
     draggable="false"
     src="assets/o.svg"
   >
-  <span
+  <img
     *ngIf="cell.state === undefined"
     class="hover"
+    draggable="false"
+    src="assets/{{gameTurn === 'x' ? 'x' : 'o'}}.svg"
   >
-    <img
-      *ngIf="gameTurn === 'x'"
-      draggable="false"
-      class="x"
-      src="assets/x.svg"
-    >
-    <img
-      *ngIf="gameTurn === 'o'"
-      draggable="false"
-      class="o"
-      src="assets/o.svg"
-    >
-  </span>
 </button>
