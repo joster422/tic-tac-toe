@@ -55,10 +55,8 @@ export class GameComponent {
       return;
     }
 
-    if (this.game.areNoMovesRemaining) {
+    if (this.game.areNoMovesRemaining)
       this.newGame();
-      return;
-    }
   }
 
   private async endGame(message: string) {
