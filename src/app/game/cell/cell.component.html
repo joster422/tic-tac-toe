@@ -6,16 +6,24 @@
   [disabled]="cell.state !== undefined || disabled === true"
   (click)="claim.emit(cell)"
 >
-  <img
+  <icon
+    *ngIf="cell.state === 'x'"
+    type="times"
+  ></icon>
+  <icon
+    *ngIf="cell.state === 'o'"
+    type="ring"
+  ></icon>
+  <!-- <img
     *ngIf="cell.state === 'x'"
     draggable="false"
     src="assets/x.svg"
-  >
-  <img
+  > -->
+  <!-- <img
     *ngIf="cell.state === 'o'"
     draggable="false"
     src="assets/o.svg"
-  >
+  > -->
   <img
     *ngIf="cell.state === undefined"
     class="hover"
