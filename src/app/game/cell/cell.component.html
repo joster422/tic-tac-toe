@@ -24,10 +24,15 @@
     draggable="false"
     src="assets/o.svg"
   > -->
-  <img
+  <icon
+    *ngIf="cell.state === undefined"
+    [type]="gameTurn === 'x' ? 'times' : 'ring'"
+    class="hover"
+  ></icon>
+  <!-- <img
     *ngIf="cell.state === undefined"
     class="hover"
     draggable="false"
-    src="assets/{{gameTurn === 'x' ? 'x' : 'o'}}.svg"
-  >
+    src="assets/.svg"
+  > -->
 </button>

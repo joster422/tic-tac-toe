@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FormControlModule } from '@joster-dev/form-control';
-import { IconModule } from '@joster/icon';
+import { IconModule } from '@joster-dev/icon';
 
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     BrowserModule,
     FormControlModule,
+    IconModule,
     FormsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
