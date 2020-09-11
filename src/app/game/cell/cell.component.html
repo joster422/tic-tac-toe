@@ -14,25 +14,9 @@
     *ngIf="cell.state === 'o'"
     type="ring"
   ></icon>
-  <!-- <img
-    *ngIf="cell.state === 'x'"
-    draggable="false"
-    src="assets/x.svg"
-  > -->
-  <!-- <img
-    *ngIf="cell.state === 'o'"
-    draggable="false"
-    src="assets/o.svg"
-  > -->
   <icon
     *ngIf="cell.state === undefined"
     [type]="gameTurn === 'x' ? 'times' : 'ring'"
     class="hover"
   ></icon>
-  <!-- <img
-    *ngIf="cell.state === undefined"
-    class="hover"
-    draggable="false"
-    src="assets/.svg"
-  > -->
 </button>

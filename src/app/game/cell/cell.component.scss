@@ -29,17 +29,12 @@ button {
     }
   }
 
-  &.highlight.x > img {
+  &.highlight.x > icon {
     animation: spinX 1s linear infinite;
   }
 
-  &.highlight.o > img {
+  &.highlight.o > icon {
     animation: spinO 1s linear infinite;
-  }
-
-  > img {
-    width: 100%;
-    height: 100%;
   }
 }
 
@@ -60,9 +55,9 @@ button {
 
 @keyframes spinX {
   from {
-    transform: rotate(0deg);
+    transform: rotateX(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotateX(360deg);
   }
 }

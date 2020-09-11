@@ -17,7 +17,7 @@
       <fc-choice
         [(ngModel)]="model.isBotEnabled"
         (ngModelChange)="restart.emit()"
-        label="🤖 play?"
+        label="🤖 Play?"
         name="isBotEnabled"
         [disabled]="disabled"
         [items]="booleans"
@@ -25,7 +25,7 @@
       <fc-choice
         [(ngModel)]="model.isBotFirst"
         (ngModelChange)="restart.emit()"
-        label="🤖 goes first?"
+        label="🤖 Goes first?"
         name="isBotFirst"
         [disabled]="!model.isBotEnabled || disabled"
         [items]="booleans"
@@ -33,7 +33,7 @@
       <fc-choice
         [(ngModel)]="model.isBotCenterFirst"
         (ngModelChange)="restart.emit()"
-        label="🤖 takes center first?"
+        label="🤖 Takes center first?"
         name="isBotCenterFirst"
         [disabled]="!model.isBotEnabled || !model.isBotFirst || disabled"
         [items]="booleans"

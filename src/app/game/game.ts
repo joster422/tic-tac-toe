@@ -46,9 +46,8 @@ export class Game {
 
   win(x: number, y: number): boolean {
     const cell = this.grid.find(c => c.x === x && c.y === y);
-    if (cell === undefined || cell.state !== undefined) {
+    if (cell === undefined || cell.state !== undefined)
       throw new Error('cannot play non-empty cell');
-    }
     cell.state = this.turn;
     if (this.winPath !== undefined)
       return true;
