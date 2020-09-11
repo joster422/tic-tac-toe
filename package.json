@@ -1,12 +1,8 @@
 {
   "name": "tic-tac-toe",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "scripts": {
-    "ghp-build": "ng build --prod --base-href=/tic-tac-toe/",
-    "ghp-deploy": "git add . && git commit --message=\"chore - gh-pages deploy\" && git push",
-    "ghp-remove-old": "git push origin --delete gh-pages",
-    "ghp-push": "git subtree push --prefix dist origin gh-pages",
-    "gh-pages": "npm run ghp-build && npm run ghp-deploy && npm run ghp-remove-old && npm run ghp-push"
+    "pages": "ng build --prod --base-href=https://joster-dev.github.io/tic-tac-toe/"
   },
   "private": true,
   "dependencies": {
