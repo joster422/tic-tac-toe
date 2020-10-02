@@ -45,28 +45,26 @@ export class GameComponent {
     this.botClaim();
   }
 
-  private botClaim() {
+  private async botClaim() {
     this.allowClicks = false;
-    this.bot.getClaim(this.game).then(claim => {
-      this.allowClicks = true;
+    const claim = await this.bot.getClaim(this.game);
+    this.allowClicks = true;
 
-      if (this.game.win(claim.x, claim.y)) {
-        this.endGame(this.game.turn === 'o' ? 'Bot O Wins' : 'Bot X Wins');
-        return;
-      }
+    if (this.game.win(claim.x, claim.y)) {
+      this.endGame(this.game.turn === 'o' ? 'Bot O Wins' : 'Bot X Wins');
+      return;
+    }
 
-      if (this.game.areNoMovesRemaining)
-        this.newGame();
-    });
+    if (this.game.areNoMovesRemaining)
+      this.newGame();
   }
 
-  private endGame(message: string) {
+  private async endGame(message: string) {
     this.allowClicks = false;
-    new Promise(r => window.setTimeout(() => r(), 1000)).then(() => {
-      alert(message);
-      this.allowClicks = true;
-      this.newGame();
-    });
+    await new Promise(r => window.setTimeout(() => r(), 1000));
+    alert(message);
+    this.allowClicks = true;
+    this.newGame();
   }
 
   private createGrid() {
