@@ -9,14 +9,17 @@
   <icon
     *ngIf="cell.state === 'x'"
     type="times"
+    [fill]="formService.model.xColor"
   ></icon>
   <icon
     *ngIf="cell.state === 'o'"
     type="ring"
+    [fill]="formService.model.oColor"
   ></icon>
   <icon
     *ngIf="cell.state === undefined"
     [type]="gameTurn === 'x' ? 'times' : 'ring'"
     class="hover"
+    [fill]="gameTurn === 'x' ? formService.model.xColor : formService.model.oColor"
   ></icon>
 </button>

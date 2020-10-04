@@ -1,9 +1,14 @@
-$breakpoint: 635px;
-
 form {
   margin: auto;
-  padding: 1em;
-  max-width: $breakpoint;
+  padding: 2em 0;
+  max-width: 720px;
+
+  > * {
+    margin-bottom: 1em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
   > div {
     text-align: center;
@@ -12,18 +17,27 @@ form {
     }
   }
 
-  > fieldset {
+  fieldset {
     padding: 1em;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     box-shadow: 0.2em 0.2em 0.2em 0 lightgrey;
 
     > div {
       display: grid;
       grid-gap: 1em;
       grid-template-columns: repeat(2, 1fr);
-      @media screen and (min-width: $breakpoint) {
+      @media (min-width: 720px) {
         grid-template-columns: repeat(3, 1fr);
       }
+    }
+  }
+
+  > section {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 1fr;
+    @media (min-width: 680px) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

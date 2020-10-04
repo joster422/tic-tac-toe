@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormService } from '../form/form.service';
 import { Cell } from './cell';
 
 @Component({
@@ -14,5 +15,5 @@ export class CellComponent {
 
   @Output() claim = new EventEmitter<Cell>();
 
-  constructor() { }
+  constructor(public formService: FormService) { }
 }

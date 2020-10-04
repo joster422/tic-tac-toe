@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Game } from './game';
 import { Bot } from './bot';
 import { Cell } from './cell/cell';
-import { Form } from './form/form';
+import { FormService } from './form/form.service';
 
 @Component({
   selector: 'ttt-game',
@@ -14,9 +14,8 @@ export class GameComponent {
   allowClicks = true;
   game!: Game;
   bot = new Bot();
-  form = new Form();
 
-  constructor() {
+  constructor(private formService: FormService) {
     this.newGame();
   }
 
@@ -33,15 +32,15 @@ export class GameComponent {
       return;
     }
 
-    if (this.form.isBotEnabled)
+    if (this.formService.model.isBotEnabled)
       this.botClaim();
   }
 
   newGame() {
     this.game = new Game(this.createGrid());
-    if (!this.form.isBotEnabled) return;
-    this.bot = new Bot(this.form.isBotCenterFirst);
-    if (!this.form.isBotFirst) return;
+    if (!this.formService.model.isBotEnabled) return;
+    this.bot = new Bot(this.formService.model.isBotCenterFirst);
+    if (!this.formService.model.isBotFirst) return;
     this.botClaim();
   }
 

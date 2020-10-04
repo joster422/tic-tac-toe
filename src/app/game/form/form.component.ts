@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Form } from './form';
+import { FormService } from './form.service';
 
 @Component({
-  selector: 'ttt-form[model]',
+  selector: 'ttt-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
@@ -13,9 +13,8 @@ export class FormComponent {
   ];
 
   @Input() disabled = false;
-  @Input() model!: Form;
 
   @Output() restart = new EventEmitter();
 
-  constructor() { }
+  constructor(public formService: FormService) { }
 }
