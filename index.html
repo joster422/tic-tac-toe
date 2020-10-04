@@ -12,15 +12,23 @@
   <link
     rel="icon"
     type="image/x-icon"
-    href="assets/icons/icon-72x72.png"
+    href="assets/logo.png"
   >
   <link
     rel="manifest"
     href="manifest.webmanifest"
   >
   <meta
+    name="theme-color"
+    content="#DDDDDD"
+  >
+  <meta
     property="og:title"
     content="Tic Tac Toe"
+  >
+  <meta
+    property="og:type"
+    content="website"
   >
   <meta
     property="og:description"
@@ -28,27 +36,68 @@
   >
   <meta
     property="og:image"
-    content="https://joster-dev.github.io/tic-tac-toe/assets/icons/icon-72x72.png"
+    content="https://joster-dev.github.io/tic-tac-toe/assets/logo.png?t=12345?"
   >
+  <meta
+    property="og:image:width"
+    content="500"
+  />
+  <meta
+    property="og:image:height"
+    content="500"
+  />
+  <meta
+    property="og:image:alt"
+    content="Ascend and descend icons"
+  />
   <meta
     property="og:url"
     content="https://joster-dev.github.io/tic-tac-toe/"
+  >
+  <meta
+    property="og:site_name"
+    content="Jacob Osterhout Projects"
   >
   <meta
     name="twitter:card"
     content="summary"
   >
   <meta
-    name="theme-color"
-    content="#fafafa"
+    name="twitter:site"
+    content="@JacobOsterhout"
+  >
+  <meta
+    property="fb:app_id"
+    content="253788859320287"
   >
 <link rel="stylesheet" href="styles.b15894aaa0a70d9d93d8.css"></head>
 
 <body>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '253788859320287',
+        cookie: true,
+        xfbml: true,
+        version: 'v8.0'
+      });
+
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <ttt-root></ttt-root>
   <noscript>
     Please enable JavaScript to continue using this application.
   </noscript>
-<script src="runtime-es2020.66c79b9d36e7169e27b0.js" type="module"></script><script src="runtime-es5.66c79b9d36e7169e27b0.js" nomodule defer></script><script src="polyfills-es5.3dc88669732e648ed1e5.js" nomodule defer></script><script src="polyfills-es2020.6022d6f28e0500e60d30.js" type="module"></script><script src="main-es2020.6c2ce85ecf01c3af0bc5.js" type="module"></script><script src="main-es5.6c2ce85ecf01c3af0bc5.js" nomodule defer></script></body>
+<script src="runtime-es2015.66c79b9d36e7169e27b0.js" type="module"></script><script src="runtime-es5.66c79b9d36e7169e27b0.js" nomodule defer></script><script src="polyfills-es5.3dc88669732e648ed1e5.js" nomodule defer></script><script src="polyfills-es2015.6022d6f28e0500e60d30.js" type="module"></script><script src="main-es2015.27c4a887c12931bc801a.js" type="module"></script><script src="main-es5.27c4a887c12931bc801a.js" nomodule defer></script></body>
 
 </html>
