@@ -18,7 +18,7 @@
     <legend>
       Bot Settings
       <icon
-        type="gear"
+        type="user"
         size="1em"
         [fill]="['247000', '000000']"
       ></icon>
@@ -53,38 +53,38 @@
       </fc-choice>
     </div>
   </fieldset>
-  <section>
-    <fieldset>
-      <legend>
-        X Settings
+  <fieldset>
+    <legend>
+      Settings
+      <icon
+        type="gear"
+        size="1em"
+        [fill]="['247000', '000000']"
+      ></icon>
+    </legend>
+    <div>
+      <fc-color
+        [(ngModel)]="formService.model.xColor"
+        name="xColor"
+      >
+        X Theme
         <icon
           type="times"
           size="1em"
           [fill]="formService.model.xColor"
         ></icon>
-      </legend>
-      <fc-color
-        [(ngModel)]="formService.model.xColor"
-        name="xColor"
-      >
-        Theme
       </fc-color>
-    </fieldset>
-    <fieldset>
-      <legend>
-        O Settings
+      <fc-color
+        [(ngModel)]="formService.model.oColor"
+        name="oColor"
+      >
+        O Theme
         <icon
           type="ring"
           size="1em"
           [fill]="formService.model.oColor"
         ></icon>
-      </legend>
-      <fc-color
-        [(ngModel)]="formService.model.oColor"
-        name="oColor"
-      >
-        Theme
       </fc-color>
-    </fieldset>
-  </section>
+    </div>
+  </fieldset>
 </form>
