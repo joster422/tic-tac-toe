@@ -23,7 +23,7 @@
         [fill]="['247000', '000000']"
       ></icon>
     </legend>
-    <div>
+    <div class="bot-settings">
       <fc-choice
         [(ngModel)]="formService.model.isBotEnabled"
         (ngModelChange)="restart.emit()"
@@ -62,7 +62,21 @@
         [fill]="['247000', '000000']"
       ></icon>
     </legend>
-    <div>
+    <div class="settings">
+      <fc-text
+        [(ngModel)]="formService.model.player1"
+        name="player1"
+        [maxLength]="20"
+      >
+        Player 1
+      </fc-text>
+      <fc-text
+        [(ngModel)]="formService.model.player2"
+        name="player2"
+        [maxLength]="20"
+      >
+        Player 2
+      </fc-text>
       <fc-color
         [(ngModel)]="formService.model.xColor"
         name="xColor"

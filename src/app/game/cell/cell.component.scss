@@ -61,3 +61,10 @@ button {
     transform: rotateX(360deg);
   }
 }
+
+.label {
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 0 0.1em;
+}
