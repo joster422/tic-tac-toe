@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 import { Game } from './game';
 import { Bot } from './bot';
@@ -16,7 +16,16 @@ export class GameComponent {
   bot = new Bot();
 
   constructor(private formService: FormService) {
+    const lsItem = window.localStorage.getItem('form');
+    if (lsItem !== null)
+      this.formService.model = JSON.parse(lsItem);
     this.newGame();
+  }
+
+  @HostListener('window:unload')
+  onBeforeUnload(): void {
+    window.localStorage.setItem('gameGrid', JSON.stringify(this.game.grid));
+    window.localStorage.setItem('form', JSON.stringify(this.formService.model));
   }
 
   claim(cell: Cell): void {
@@ -28,6 +37,7 @@ export class GameComponent {
     }
 
     if (this.game.areNoMovesRemaining) {
+      window.localStorage.removeItem('gameGrid');
       this.newGame();
       return;
     }
@@ -37,7 +47,11 @@ export class GameComponent {
   }
 
   newGame(): void {
-    this.game = new Game(this.createGrid());
+    const lsItem = window.localStorage.getItem('gameGrid');
+    let grid = this.createGrid();
+    if (lsItem !== null)
+      grid = JSON.parse(lsItem);
+    this.game = new Game(grid);
     if (!this.formService.model.isBotEnabled) return;
     this.bot = new Bot(this.formService.model.isBotCenterFirst);
     if (!this.formService.model.isBotFirst) return;
@@ -59,6 +73,7 @@ export class GameComponent {
   }
 
   private async endGame(): Promise<void> {
+    window.localStorage.removeItem('gameGrid');
     this.allowClicks = false;
     await new Promise(r => window.setTimeout(() => r(), 2500));
     this.allowClicks = true;
