@@ -22,10 +22,7 @@
     class="hover"
     [fill]="gameTurn === 'x' ? formService.model.xColor : formService.model.oColor"
   ></icon>
-  <span
-    *ngIf="cell.state === 'x'"
-    class="label"
-  >
-    {{formService.model.player1}}
+  <span class="{{isBot ? 'bot-label' : 'label'}}">
+    <label>{{label}}</label>
   </span>
 </button>

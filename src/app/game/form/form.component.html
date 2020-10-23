@@ -7,7 +7,8 @@
       [isDisabled]="disabled"
       (clicked)="restart.emit()"
     >
-      Restart&nbsp;<icon
+      Restart&nbsp;&nbsp;
+      <icon
         type="refresh"
         size="1em"
         [fill]="[formService.model.xColor,formService.model.oColor]"
@@ -31,7 +32,13 @@
         [disabled]="disabled"
         [items]="booleans"
       >
-        Play?
+        Play
+        <icon
+          *ngIf="formService.model.isBotEnabled"
+          size="1em"
+          [type]="formService.model.isBotFirst ? 'times' : 'ring'"
+          [fill]="formService.model.isBotFirst ? formService.model.xColor : formService.model.oColor"
+        ></icon>
       </fc-choice>
       <fc-choice
         [(ngModel)]="formService.model.isBotFirst"
@@ -40,7 +47,7 @@
         [disabled]="!formService.model.isBotEnabled || disabled"
         [items]="booleans"
       >
-        Go first?
+        Go first
       </fc-choice>
       <fc-choice
         [(ngModel)]="formService.model.isBotCenterFirst"
@@ -49,7 +56,7 @@
         [disabled]="!formService.model.isBotEnabled || !formService.model.isBotFirst || disabled"
         [items]="booleans"
       >
-        Take center first?
+        Take center first
       </fc-choice>
     </div>
   </fieldset>
@@ -69,13 +76,25 @@
         [maxLength]="20"
       >
         Player 1
+        <icon
+          size="1em"
+          [type]="formService.model.isBotFirst ? 'ring' : 'times'"
+          [fill]="formService.model.isBotFirst ? formService.model.oColor : formService.model.xColor"
+        ></icon>
       </fc-text>
       <fc-text
         [(ngModel)]="formService.model.player2"
         name="player2"
+        [disabled]="formService.model.isBotEnabled"
         [maxLength]="20"
       >
         Player 2
+        <icon
+          *ngIf="!formService.model.isBotEnabled"
+          size="1em"
+          type="ring"
+          [fill]="formService.model.oColor"
+        ></icon>
       </fc-text>
       <fc-color
         [(ngModel)]="formService.model.xColor"

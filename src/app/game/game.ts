@@ -35,25 +35,23 @@ export class Game {
     return this.grid.filter(cell => cell.state === undefined);
   }
 
-  get winPath() {
+  get winPath(): Cell[] {
     return this.paths
-      .find(path => path.every(cell => cell.state === 'x') || path.every(cell => cell.state === 'o'));
+      .find(path => path.every(cell => cell.state === 'x') || path.every(cell => cell.state === 'o')) || [];
   }
 
-  get areNoMovesRemaining() {
+  get areNoMovesRemaining(): boolean {
     return this.grid.every(cell => cell.state !== undefined);
   }
 
   win(x: number, y: number): boolean {
-    const cell = this.grid.find(c => c.x === x && c.y === y);
+    const cell = this.grid.find(item => item.x === x && item.y === y);
     if (cell === undefined || cell.state !== undefined)
-      throw new Error('cannot play non-empty cell');
+      throw new Error('can not play non-empty cell');
     cell.state = this.turn;
-    if (this.winPath !== undefined)
+    if (this.winPath.length > 0)
       return true;
     this.turn = this.turn === 'x' ? 'o' : 'x';
     return false;
   }
-
-
 }

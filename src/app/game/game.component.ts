@@ -19,11 +19,11 @@ export class GameComponent {
     this.newGame();
   }
 
-  claim(cell: Cell) {
+  claim(cell: Cell): void {
     if (!this.allowClicks) return;
 
     if (this.game.win(cell.x, cell.y)) {
-      this.endGame(this.game.turn === 'o' ? 'O Wins' : 'X Wins');
+      this.endGame();
       return;
     }
 
@@ -36,7 +36,7 @@ export class GameComponent {
       this.botClaim();
   }
 
-  newGame() {
+  newGame(): void {
     this.game = new Game(this.createGrid());
     if (!this.formService.model.isBotEnabled) return;
     this.bot = new Bot(this.formService.model.isBotCenterFirst);
@@ -44,13 +44,13 @@ export class GameComponent {
     this.botClaim();
   }
 
-  private async botClaim() {
+  private async botClaim(): Promise<void> {
     this.allowClicks = false;
     const claim = await this.bot.getClaim(this.game);
     this.allowClicks = true;
 
     if (this.game.win(claim.x, claim.y)) {
-      this.endGame(this.game.turn === 'o' ? 'Bot O Wins' : 'Bot X Wins');
+      this.endGame();
       return;
     }
 
@@ -58,15 +58,14 @@ export class GameComponent {
       this.newGame();
   }
 
-  private async endGame(message: string) {
+  private async endGame(): Promise<void> {
     this.allowClicks = false;
-    await new Promise(r => window.setTimeout(() => r(), 1000));
-    alert(message);
+    await new Promise(r => window.setTimeout(() => r(), 2500));
     this.allowClicks = true;
     this.newGame();
   }
 
-  private createGrid() {
+  private createGrid(): Cell[] {
     const temp = [];
     for (let y = 0; y < 3; y++)
       for (let x = 0; x < 3; x++)
