@@ -3,7 +3,8 @@
   "theme_color": "#DDDDDD",
   "background_color": "#FFFFFF",
   "display": "standalone",
-  "start_url": "/tic-tac-toe/",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/logo.svg",
