@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { FormService } from '../form/form.service';
-import { Cell } from './cell';
+import { Cell } from 'src/app/models';
 
 @Component({
   selector: 'ttt-cell[cell]',

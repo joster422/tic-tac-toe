@@ -17,51 +17,6 @@
   </div>
   <fieldset>
     <legend>
-      Bot Settings
-      <icon
-        type="user"
-        size="1em"
-        [fill]="['247000', '000000']"
-      ></icon>
-    </legend>
-    <div class="bot-settings">
-      <fc-choice
-        [(ngModel)]="formService.model.isBotEnabled"
-        (ngModelChange)="restart.emit()"
-        name="isBotEnabled"
-        [disabled]="disabled"
-        [items]="booleans"
-      >
-        Play
-        <icon
-          *ngIf="formService.model.isBotEnabled"
-          size="1em"
-          [type]="formService.model.isBotEnabled && formService.model.isBotFirst ? 'ring' : 'times'"
-          [fill]="formService.model.isBotEnabled && formService.model.isBotFirst ? formService.model.oColor : formService.model.xColor"
-        ></icon>
-      </fc-choice>
-      <fc-choice
-        [(ngModel)]="formService.model.isBotFirst"
-        (ngModelChange)="restart.emit()"
-        name="isBotFirst"
-        [disabled]="!formService.model.isBotEnabled || disabled"
-        [items]="booleans"
-      >
-        Go first
-      </fc-choice>
-      <fc-choice
-        [(ngModel)]="formService.model.isBotCenterFirst"
-        (ngModelChange)="restart.emit()"
-        name="isBotCenterFirst"
-        [disabled]="!formService.model.isBotEnabled || !formService.model.isBotFirst || disabled"
-        [items]="booleans"
-      >
-        Take center first
-      </fc-choice>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>
       Settings
       <icon
         type="gear"
@@ -78,8 +33,8 @@
         Player 1
         <icon
           size="1em"
-          [type]="formService.model.isBotFirst ? 'ring' : 'times'"
-          [fill]="formService.model.isBotFirst ? formService.model.oColor : formService.model.xColor"
+          [type]="formService.model.isBotEnabled && formService.model.isBotFirst ? 'ring' : 'times'"
+          [fill]="formService.model.isBotEnabled && formService.model.isBotFirst ? formService.model.oColor : formService.model.xColor"
         ></icon>
       </fc-text>
       <fc-text
@@ -118,6 +73,52 @@
           [fill]="formService.model.oColor"
         ></icon>
       </fc-color>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>
+      Bot Settings
+      <icon
+        type="user"
+        size="1em"
+        [fill]="['247000', '000000']"
+      ></icon>
+    </legend>
+    <div class="bot-settings">
+      <fc-choice
+        [(ngModel)]="formService.model.isBotEnabled"
+        (ngModelChange)="restart.emit()"
+        name="isBotEnabled"
+        [disabled]="disabled"
+        [items]="booleans"
+      >
+        Play
+        <icon
+          *ngIf="formService.model.isBotEnabled"
+          size="1em"
+          [type]="formService.model.isBotFirst ? 'times' : 'ring'"
+          [fill]="formService.model.isBotFirst ? formService.model.xColor : formService.model.oColor"
+        ></icon>
+      </fc-choice>
+      <fc-choice
+        [(ngModel)]="formService.model.isBotFirst"
+        (ngModelChange)="restart.emit()"
+        name="isBotFirst"
+        [disabled]="!formService.model.isBotEnabled || disabled"
+        [items]="booleans"
+      >
+        Go first
+      </fc-choice>
+      <fc-choice
+        [(ngModel)]="formService.model.botFirstMove"
+        (ngModelChange)="restart.emit()"
+        name="botFirstMove"
+        required
+        [disabled]="!formService.model.isBotEnabled || !formService.model.isBotFirst || disabled"
+        [items]="botFirstMoves"
+      >
+        First move
+      </fc-choice>
     </div>
   </fieldset>
 </form>

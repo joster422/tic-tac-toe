@@ -1,25 +1,31 @@
-import { Cell } from './cell/cell';
+import { botFirstMove } from './bot-first-move.type';
+import { Cell } from './cell';
 import { Game } from './game';
 
 export class Bot {
 
-  constructor(private readonly canClaimCenterFirst = true) { }
+  constructor(private readonly firstMove: botFirstMove = 'center') { }
 
   async getClaim(game: Game): Promise<Cell> {
-    const centerMove = game.moves.find(cell => cell.x === 1 && cell.y === 1);
-    const cornerMoves = game.moves.filter(cell => cell.x !== 1 && cell.y !== 1);
-    const turn0 = game.moves.length === 9;
-    const turn1 = game.moves.length === 8;
+    if (game.moves.length === 9)
+      switch (this.firstMove) {
+        case 'center':
+          return game.moves.filter(cell => cell.x === 1 && cell.y === 1)[0];
+        case 'corner':
+          const cornerMoves = game.moves.filter(cell => cell.x !== 1 && cell.y !== 1);
+          return cornerMoves[Math.floor(Math.random() * cornerMoves.length)];
+        case 'adjacent':
+          const adjacentMoves = game.moves.filter(cell => [1, 3].includes(cell.x + cell.y));
+          return adjacentMoves[Math.floor(Math.random() * adjacentMoves.length)];
+      }
 
-    if (turn0 && centerMove !== undefined)
-      return this.canClaimCenterFirst
-        ? centerMove
-        : cornerMoves[Math.floor(Math.random() * cornerMoves.length)];
-
-    if (turn1)
+    if (game.moves.length === 8) {
+      const centerMove = game.moves.find(cell => cell.x === 1 && cell.y === 1);
+      const cornerMoves = game.moves.filter(cell => cell.x !== 1 && cell.y !== 1);
       return centerMove !== undefined
         ? centerMove
         : cornerMoves[Math.floor(Math.random() * cornerMoves.length)];
+    }
 
     const scores = await this.scores(game, game.turn);
 
@@ -27,11 +33,11 @@ export class Bot {
     for (let i = 1; i < scores.length; i++)
       maxScoreIndex = scores[maxScoreIndex] > scores[i] ? maxScoreIndex : i;
 
-    const maxScoreIndexs = scores
+    const maxScoreIndexes = scores
       .map((score, index) => score === scores[maxScoreIndex] ? index : -1)
       .filter(score => score !== -1);
 
-    return game.moves[maxScoreIndexs[Math.floor(Math.random() * maxScoreIndexs.length)]];
+    return game.moves[maxScoreIndexes[Math.floor(Math.random() * maxScoreIndexes.length)]];
   }
 
   private async scores(game: Game, turn: 'x' | 'o', depth = 0): Promise<number[]> {

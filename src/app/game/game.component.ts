@@ -1,9 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 
-import { Game } from './game';
-import { Bot } from './bot';
-import { Cell } from './cell/cell';
+import { Bot, Cell, Game } from '../models';
 import { FormService } from './form/form.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Component({
   selector: 'ttt-game',
@@ -15,17 +14,21 @@ export class GameComponent {
   game!: Game;
   bot = new Bot();
 
-  constructor(private formService: FormService) {
-    const lsItem = window.localStorage.getItem('form');
-    if (lsItem !== null)
-      this.formService.model = JSON.parse(lsItem);
+  constructor(
+    private formService: FormService,
+    private localStorageService: LocalStorageService
+  ) {
+    if (this.localStorageService.form !== null)
+      this.formService.model = this.localStorageService.form;
     this.newGame();
   }
 
   @HostListener('window:unload')
   onBeforeUnload(): void {
-    window.localStorage.setItem('gameGrid', JSON.stringify(this.game.grid));
-    window.localStorage.setItem('form', JSON.stringify(this.formService.model));
+    this.localStorageService.unload(
+      this.game.grid,
+      this.formService.model
+    );
   }
 
   claim(cell: Cell): void {
@@ -47,14 +50,13 @@ export class GameComponent {
 
   newGame(reset = false): void {
     if (reset)
-      window.localStorage.removeItem('gameGrid');
-    const lsItem = window.localStorage.getItem('gameGrid');
-    let grid = this.createGrid();
-    if (lsItem !== null)
-      grid = JSON.parse(lsItem);
-    this.game = new Game(grid);
+      this.localStorageService.removeGame();
+    let gameGrid = this.localStorageService.game;
+    if (gameGrid === null)
+      gameGrid = this.createGrid();
+    this.game = new Game(gameGrid);
     if (!this.formService.model.isBotEnabled) return;
-    this.bot = new Bot(this.formService.model.isBotCenterFirst);
+    this.bot = new Bot(this.formService.model.botFirstMove);
     if (!this.formService.model.isBotFirst) return;
     this.botClaim();
   }

@@ -1,4 +1,4 @@
-import { Cell } from './cell/cell';
+import { Cell } from './cell';
 
 export class Game {
   turn: 'x' | 'o' = 'x';

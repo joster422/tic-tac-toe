@@ -27,8 +27,9 @@ form {
       display: grid;
       grid-gap: 1em;
       grid-template-columns: repeat(2, 1fr);
-      @media (min-width: 720px) {
-        grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      :last-child {
+        grid-column: span 2;
       }
     }
 

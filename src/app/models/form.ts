@@ -1,7 +1,9 @@
+import { botFirstMove } from './bot-first-move.type';
+
 export class Form {
-  isBotEnabled = true;
+  isBotEnabled = false;
   isBotFirst = false;
-  isBotCenterFirst = true;
+  botFirstMove: botFirstMove = 'center';
   xColor: string | null = '702400';
   oColor: string | null = '002470';
   player1: string | null = null;
