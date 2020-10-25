@@ -55,9 +55,11 @@ export class GameComponent {
     if (gameGrid === null)
       gameGrid = this.createGrid();
     this.game = new Game(gameGrid);
-    if (!this.formService.model.isBotEnabled) return;
+    if (!this.formService.model.isBotEnabled)
+      return;
     this.bot = new Bot(this.formService.model.botFirstMove);
-    if (!this.formService.model.isBotFirst) return;
+    if (this.game.moves.length !== 9 || !this.formService.model.isBotFirst)
+      return;
     this.botClaim();
   }
 

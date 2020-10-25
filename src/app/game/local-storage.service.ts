@@ -11,7 +11,7 @@ export class LocalStorageService {
   readonly formKey = 'form';
 
   constructor() {
-    const item = window.localStorage.getItem(this.version);
+    const item = window.localStorage.getItem(this.versionKey);
     if (item === this.version)
       return;
     window.localStorage.removeItem(this.versionKey);
