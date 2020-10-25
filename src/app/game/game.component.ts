@@ -37,8 +37,7 @@ export class GameComponent {
     }
 
     if (this.game.areNoMovesRemaining) {
-      window.localStorage.removeItem('gameGrid');
-      this.newGame();
+      this.newGame(true);
       return;
     }
 
@@ -46,7 +45,9 @@ export class GameComponent {
       this.botClaim();
   }
 
-  newGame(): void {
+  newGame(reset = false): void {
+    if (reset)
+      window.localStorage.removeItem('gameGrid');
     const lsItem = window.localStorage.getItem('gameGrid');
     let grid = this.createGrid();
     if (lsItem !== null)
@@ -73,11 +74,10 @@ export class GameComponent {
   }
 
   private async endGame(): Promise<void> {
-    window.localStorage.removeItem('gameGrid');
     this.allowClicks = false;
     await new Promise(r => window.setTimeout(() => r(), 2500));
     this.allowClicks = true;
-    this.newGame();
+    this.newGame(true);
   }
 
   private createGrid(): Cell[] {
