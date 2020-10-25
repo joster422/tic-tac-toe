@@ -36,8 +36,8 @@
         <icon
           *ngIf="formService.model.isBotEnabled"
           size="1em"
-          [type]="formService.model.isBotFirst ? 'times' : 'ring'"
-          [fill]="formService.model.isBotFirst ? formService.model.xColor : formService.model.oColor"
+          [type]="formService.model.isBotEnabled && formService.model.isBotFirst ? 'ring' : 'times'"
+          [fill]="formService.model.isBotEnabled && formService.model.isBotFirst ? formService.model.oColor : formService.model.xColor"
         ></icon>
       </fc-choice>
       <fc-choice
