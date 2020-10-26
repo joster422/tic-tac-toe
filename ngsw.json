@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1603665395976,
+  "timestamp": 1603676670839,
   "index": "https://joster-dev.github.io/tic-tac-toe/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "https://joster-dev.github.io/tic-tac-toe/index.html",
-        "https://joster-dev.github.io/tic-tac-toe/main.71364a0ac30f49065776.js",
+        "https://joster-dev.github.io/tic-tac-toe/main.aba1fe9c7adf35a2c307.js",
         "https://joster-dev.github.io/tic-tac-toe/manifest.webmanifest",
         "https://joster-dev.github.io/tic-tac-toe/polyfills.35a5ca1855eb057f016a.js",
         "https://joster-dev.github.io/tic-tac-toe/runtime.acf0dec4155e77772545.js",
@@ -38,8 +38,8 @@
   "hashTable": {
     "https://joster-dev.github.io/tic-tac-toe/assets/logo.png": "fa39bc9ab551fc494d317ec3df3c9b48845ac9c7",
     "https://joster-dev.github.io/tic-tac-toe/assets/logo.svg": "2b569bd6aba4b1d0c491bb0f440f2e214f67e255",
-    "https://joster-dev.github.io/tic-tac-toe/index.html": "05346da1868803430fd0f479f49ac3e8ef568add",
-    "https://joster-dev.github.io/tic-tac-toe/main.71364a0ac30f49065776.js": "7cec1b4bd6dca018cb1a14189955f4a4721cc982",
+    "https://joster-dev.github.io/tic-tac-toe/index.html": "b1396934813a5843d8083100887ea7a0f7c320c5",
+    "https://joster-dev.github.io/tic-tac-toe/main.aba1fe9c7adf35a2c307.js": "377d3f83a3431e6750ed8ad8fdb13625171c080d",
     "https://joster-dev.github.io/tic-tac-toe/manifest.webmanifest": "d05fb7db01087d7f9dfbe813ffdc649247eddde6",
     "https://joster-dev.github.io/tic-tac-toe/polyfills.35a5ca1855eb057f016a.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
     "https://joster-dev.github.io/tic-tac-toe/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
