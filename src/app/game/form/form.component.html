@@ -89,6 +89,7 @@
         [(ngModel)]="formService.model.isBotEnabled"
         (ngModelChange)="restart.emit()"
         name="isBotEnabled"
+        required
         [disabled]="disabled"
         [items]="booleans"
       >
@@ -104,6 +105,7 @@
         [(ngModel)]="formService.model.isBotFirst"
         (ngModelChange)="restart.emit()"
         name="isBotFirst"
+        required
         [disabled]="!formService.model.isBotEnabled || disabled"
         [items]="booleans"
       >
