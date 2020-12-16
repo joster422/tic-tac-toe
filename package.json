@@ -16,7 +16,7 @@
     "@angular/router": "~10.1.6",
     "@angular/service-worker": "~10.1.6",
     "@joster-dev/form-control": "0.0.8",
-    "@joster-dev/icon": "0.0.10",
+    "@joster-dev/icon": "0.0.12",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

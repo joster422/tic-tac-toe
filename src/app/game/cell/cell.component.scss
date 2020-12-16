@@ -29,37 +29,11 @@ button {
       animation: fadeIn 1s ease;
     }
   }
-
-  &.highlight.x > icon {
-    animation: spinX 1s linear infinite;
-  }
-
-  &.highlight.o > icon {
-    animation: spinO 1s linear infinite;
-  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-  }
-}
-
-@keyframes spinO {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
-}
-
-@keyframes spinX {
-  from {
-    transform: rotateX(0deg);
-  }
-  to {
-    transform: rotateX(360deg);
   }
 }
 

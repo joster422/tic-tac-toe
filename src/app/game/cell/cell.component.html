@@ -1,6 +1,5 @@
 <button
   type="button"
-  [class.highlight]="highlight === true"
   [class.o]="cell.state === 'o'"
   [class.x]="cell.state === 'x'"
   [disabled]="cell.state !== undefined || disabled === true"
@@ -10,11 +9,13 @@
     *ngIf="cell.state === 'x'"
     type="times"
     [fill]="formService.model.xColor"
+    [spin]="highlight ? 'x' : null"
   ></icon>
   <icon
     *ngIf="cell.state === 'o'"
     type="ring"
     [fill]="formService.model.oColor"
+    [spin]="highlight ? 'y' : null"
   ></icon>
   <icon
     *ngIf="cell.state === undefined"
